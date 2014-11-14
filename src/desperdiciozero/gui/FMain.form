@@ -117,18 +117,27 @@
                 <Property name="text" type="java.lang.String" value="Ficha Sensorial"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFichaSensorialActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnFichaRecebimento">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ficha de Recebimento"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFichaRecebimentoActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnCuba">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cubas"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCubaActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnAlimento">
               <Properties>

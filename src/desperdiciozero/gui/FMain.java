@@ -49,12 +49,27 @@ public class FMain extends javax.swing.JFrame {
 
         btnFichaSensorial.setText("Ficha Sensorial");
         btnFichaSensorial.setToolTipText("");
+        btnFichaSensorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFichaSensorialActionPerformed(evt);
+            }
+        });
 
         btnFichaRecebimento.setText("Ficha de Recebimento");
         btnFichaRecebimento.setToolTipText("");
+        btnFichaRecebimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFichaRecebimentoActionPerformed(evt);
+            }
+        });
 
         btnCuba.setText("Cubas");
         btnCuba.setToolTipText("");
+        btnCuba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCubaActionPerformed(evt);
+            }
+        });
 
         btnAlimento.setText("Alimentos");
         btnAlimento.setToolTipText("");
@@ -175,6 +190,22 @@ public class FMain extends javax.swing.JFrame {
         cadAlimento.setLocationRelativeTo(this);
         cadAlimento.setVisible(true);
     }//GEN-LAST:event_btnAlimentoActionPerformed
+
+    private void btnCubaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCubaActionPerformed
+        FCadCubas cadCuba = new FCadCubas();
+        cadCuba.setLocationRelativeTo(this);
+        cadCuba.setVisible(true);
+    }//GEN-LAST:event_btnCubaActionPerformed
+
+    private void btnFichaRecebimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFichaRecebimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFichaRecebimentoActionPerformed
+
+    private void btnFichaSensorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFichaSensorialActionPerformed
+       FCadSensorial cadSens = new FCadSensorial();
+       cadSens.setLocationRelativeTo(cadSens);
+       cadSens.setVisible(true);
+    }//GEN-LAST:event_btnFichaSensorialActionPerformed
 
     /**
      * @param args the command line arguments
