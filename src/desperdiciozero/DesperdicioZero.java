@@ -5,6 +5,8 @@
  */
 package desperdiciozero;
 
+import desperdiciozero.gui.FMain;
+
 /**
  *
  * @author Acer
@@ -15,7 +17,9 @@ public class DesperdicioZero {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        FMain mainForm = new FMain();
+        mainForm.setLocationRelativeTo(null);
+        mainForm.setVisible(true);
     }
     
 }
