@@ -1,0 +1,28 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package desperdiciozero.modelo;
+
+/**
+ *
+ * @author Gabriel Jorge
+ */
+public enum Tipo {
+    ALMOCO(0), JANTAR(1);
+    
+    private int VAL;
+    
+    private Tipo(int val){
+        this.VAL = val;
+    }
+    
+    @Override
+    public String toString(){
+        if(VAL == 0)
+            return "Almoço";
+        else
+            return "Jantar";
+    }
+}
