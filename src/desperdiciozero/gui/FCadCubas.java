@@ -35,7 +35,7 @@ public class FCadCubas extends javax.swing.JFrame {
         jTextPane2 = new javax.swing.JTextPane();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Adicionar Cuba");
 
         jButton1.setText("Adicionar");
