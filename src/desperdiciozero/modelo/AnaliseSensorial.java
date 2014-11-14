@@ -17,6 +17,17 @@ public class AnaliseSensorial {
     
     public AnaliseSensorial(){}
     
+    public AnaliseSensorial(boolean sabor,
+            boolean odor,
+            boolean aparencia,
+            boolean consistencia){
+        
+        this.sabor = sabor;
+        this.odor = odor;
+        this.aparencia = aparencia;
+        this.consistencia = consistencia;
+    }
+    
     public void setSabor(boolean avaliacao){
         this.sabor = avaliacao;
     }

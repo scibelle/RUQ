@@ -21,6 +21,25 @@ public class AlimentoFicha {
     
     public AlimentoFicha(){}
     
+    public AlimentoFicha(double pesoReal, 
+            double temperatura, 
+            double sobrasSujas, 
+            double pesoRealSobrasSujas,
+            double porcaoReal,
+            double porcaoSobrasSujas,
+            Cuba recipiente,
+            Alimento alimento){
+        
+        this.pesoReal = pesoReal;
+        this.temperatura = temperatura;
+        this.sobrasSujas = sobrasSujas;
+        this.pesoRealSobrasSujas = pesoRealSobrasSujas;
+        this.porcoesReal = porcaoReal;
+        this.porcoesSobrasSujas = porcaoSobrasSujas;
+        this.recipiente = recipiente;
+        this.alimento = alimento;
+    }
+    
     public void setTemperatura(double temperatura){
         this.temperatura = temperatura;
     }
