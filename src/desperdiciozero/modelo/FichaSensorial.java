@@ -21,6 +21,22 @@ public class FichaSensorial {
     
     public FichaSensorial(){}
     
+    public FichaSensorial(String cardapio,
+            LocalTime horaDeEntrega, 
+            LocalTime inicioDaDistribuicao,
+            Funcionario funcionarioResponsavel,
+            Tipo tipo,
+            Funcionario responsavelPelaAvaliacao){
+        
+        this.cardapio = cardapio;
+        this.horaDeEntrega = horaDeEntrega;
+        this.inicioDaDistribuicao = inicioDaDistribuicao;
+        this.funcionarioResponsavel = funcionarioResponsavel;
+        this.tipo = tipo;
+        this.responsavelPelaAvaliacao = responsavelPelaAvaliacao;
+        
+    }
+    
     public void setCardapio(String cardapio){
         this.cardapio = cardapio;
     }
@@ -54,5 +70,12 @@ public class FichaSensorial {
     }
     public Funcionario getResponsavelPelaAvaliacao(){
         return this.responsavelPelaAvaliacao;
+    }
+    
+    public void setTipo(Tipo tipo){
+        this.tipo = tipo;
+    }
+    public Tipo getTipo(){
+        return this.tipo;
     }
 }
