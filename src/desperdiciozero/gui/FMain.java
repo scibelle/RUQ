@@ -41,7 +41,7 @@ public class FMain extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Desperdicio Zero v0.6 13Nov2014");
+        setTitle("Desperdicio Zero v0.7 14Nov2014");
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -49,12 +49,27 @@ public class FMain extends javax.swing.JFrame {
 
         btnFichaSensorial.setText("Ficha Sensorial");
         btnFichaSensorial.setToolTipText("");
+        btnFichaSensorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFichaSensorialActionPerformed(evt);
+            }
+        });
 
         btnFichaRecebimento.setText("Ficha de Recebimento");
         btnFichaRecebimento.setToolTipText("");
+        btnFichaRecebimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFichaRecebimentoActionPerformed(evt);
+            }
+        });
 
         btnCuba.setText("Cubas");
         btnCuba.setToolTipText("");
+        btnCuba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCubaActionPerformed(evt);
+            }
+        });
 
         btnAlimento.setText("Alimentos");
         btnAlimento.setToolTipText("");
@@ -175,6 +190,22 @@ public class FMain extends javax.swing.JFrame {
         cadAlimento.setLocationRelativeTo(this);
         cadAlimento.setVisible(true);
     }//GEN-LAST:event_btnAlimentoActionPerformed
+
+    private void btnCubaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCubaActionPerformed
+        FCadCubas cadCuba = new FCadCubas();
+        cadCuba.setLocationRelativeTo(this);
+        cadCuba.setVisible(true);
+    }//GEN-LAST:event_btnCubaActionPerformed
+
+    private void btnFichaRecebimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFichaRecebimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFichaRecebimentoActionPerformed
+
+    private void btnFichaSensorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFichaSensorialActionPerformed
+       FCadSensorial cadSens = new FCadSensorial();
+       cadSens.setLocationRelativeTo(cadSens);
+       cadSens.setVisible(true);
+    }//GEN-LAST:event_btnFichaSensorialActionPerformed
 
     /**
      * @param args the command line arguments
