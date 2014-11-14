@@ -7,7 +7,6 @@ package desperdiciozero.modelo;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *
@@ -19,6 +18,7 @@ public class FichaRecebimento {
     private Tipo tipo;
     private double rejeito;
     private boolean autorizado;
+    private double totalRefeicoes;
     private ArrayList<AlimentoFicha> listaDeAlimentos;
     
     public FichaRecebimento(){}

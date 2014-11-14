@@ -12,7 +12,9 @@ package desperdiciozero.modelo;
 public class Funcionario {
     private String nome;
     
-    public Funcionario(){}
+    public Funcionario(String nome){
+        this.nome = nome;
+    }
     
     public void setNome(String nome){
         this.nome = nome;

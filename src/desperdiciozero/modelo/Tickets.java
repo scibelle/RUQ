@@ -17,6 +17,13 @@ public class Tickets {
     
     public Tickets(){}
     
+    public Tickets(int estudantes, int professores, int residentes, int funcionarios){
+        this.estudantes = estudantes;
+        this.funcionarios = funcionarios;
+        this.professores = professores;
+        this.residentes = residentes;
+    }
+    
     public void setTotalProfessores(int total){
         this.professores = total;
     }
