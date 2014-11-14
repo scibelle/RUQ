@@ -198,7 +198,9 @@ public class FMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCubaActionPerformed
 
     private void btnFichaRecebimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFichaRecebimentoActionPerformed
-        // TODO add your handling code here:
+        FCadFichaRecebimento cadRec = new FCadFichaRecebimento();
+        cadRec.setLocationRelativeTo(this);
+        cadRec.setVisible(true);
     }//GEN-LAST:event_btnFichaRecebimentoActionPerformed
 
     private void btnFichaSensorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFichaSensorialActionPerformed
