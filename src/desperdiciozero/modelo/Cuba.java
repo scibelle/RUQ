@@ -7,7 +7,7 @@ package desperdiciozero.modelo;
 
 /**
  *
- * @author Acer
+ * @author Gabriel Jorge
  */
 public class Cuba {
     private String nome;
