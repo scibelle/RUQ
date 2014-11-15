@@ -12,6 +12,7 @@ package desperdiciozero.modelo;
 public class Alimento {
     private String nome;
     private double percapta;
+    private double temperatura;
     
     public Alimento(){}
     
@@ -32,5 +33,17 @@ public class Alimento {
     }
     public double getPercapta(){
         return this.percapta;
+    }
+    
+     public void setTemperatura(double temperatura){
+        this.temperatura = temperatura;
+    }
+    public double getTemperatura(){
+        return this.temperatura;
+    }
+    
+    @Override
+    public String toString(){
+        return "Nome: " + this.nome + " -- Percapta: " + this.percapta;
     }
 }

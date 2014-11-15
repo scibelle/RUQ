@@ -31,4 +31,9 @@ public class Cuba {
     public double getPeso(){
         return this.peso;
     }
+    
+    @Override
+    public String toString(){
+        return "Nome: " + this.nome +" -- Peso: " + this.peso;
+    }
 }

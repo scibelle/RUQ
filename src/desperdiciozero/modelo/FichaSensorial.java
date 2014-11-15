@@ -6,6 +6,7 @@
 package desperdiciozero.modelo;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,8 +19,11 @@ public class FichaSensorial {
     private Funcionario funcionarioResponsavel;
     private Tipo tipo;
     private Funcionario responsavelPelaAvaliacao;
+    private ArrayList<AlimentoFichaSensorial> listaDeAlimentos;
     
-    public FichaSensorial(){}
+    public FichaSensorial(){
+        listaDeAlimentos = new ArrayList<>();
+    }
     
     public FichaSensorial(String cardapio,
             LocalTime horaDeEntrega, 
@@ -28,6 +32,7 @@ public class FichaSensorial {
             Tipo tipo,
             Funcionario responsavelPelaAvaliacao){
         
+        this.listaDeAlimentos = new ArrayList<>();
         this.cardapio = cardapio;
         this.horaDeEntrega = horaDeEntrega;
         this.inicioDaDistribuicao = inicioDaDistribuicao;
@@ -35,6 +40,14 @@ public class FichaSensorial {
         this.tipo = tipo;
         this.responsavelPelaAvaliacao = responsavelPelaAvaliacao;
         
+    }
+    
+    public void addAlimentoFichaSensorial(AlimentoFichaSensorial alimento){
+        this.listaDeAlimentos.add(alimento);
+    }
+    
+    public ArrayList<AlimentoFichaSensorial> getListaDeAlimentos(){
+        return this.listaDeAlimentos;
     }
     
     public void setCardapio(String cardapio){
@@ -77,5 +90,15 @@ public class FichaSensorial {
     }
     public Tipo getTipo(){
         return this.tipo;
+    }
+    
+    @Override
+    public String toString(){
+        return "Cardápio: " + this.cardapio + "\n" +
+                "Horário de entrega: " + this.horaDeEntrega.toString() + "\n" +
+                "Início da distribuição: " + this.inicioDaDistribuicao.toString() + "\n" +
+                funcionarioResponsavel.toString() + "\n" +
+                "Tipo: " + this.tipo.toString() + "\n" +
+                this.responsavelPelaAvaliacao.toString();
     }
 }
