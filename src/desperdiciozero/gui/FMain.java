@@ -41,7 +41,7 @@ public class FMain extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Desperdicio Zero v0.7 14Nov2014");
+        setTitle("Desperdicio Zero v0.8 15Nov2014");
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
