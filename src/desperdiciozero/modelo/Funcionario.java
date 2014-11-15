@@ -22,4 +22,9 @@ public class Funcionario {
     public String getNome(){
         return this.nome;
     }
+    
+    @Override
+    public String toString(){
+        return "Funcionário: " + this.nome;
+    }
 }

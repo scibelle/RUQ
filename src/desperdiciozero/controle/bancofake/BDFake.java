@@ -10,16 +10,18 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Acer
+ * @author Gabriel Jorge
  */
 public class BDFake {
-    public static ArrayList<FichaRecebimento> bfFichaRecebimento;
-    public static ArrayList<FichaSensorial> bfFichaSensorial;
-    public static ArrayList<Alimento> bfAlimento;
-    public static ArrayList<AlimentoFicha> bfAliemntoFicha;
-    public static ArrayList<AnaliseSensorial> bfAnaliseSensorial;
-    public static ArrayList<Cuba> bfCuba;
-    public static ArrayList<Funcionario> bfFuncionario;
-    public static ArrayList<Temperatura> bfTemperatura;
-    public static ArrayList<Tickets> bfTickets;
+    public static ArrayList<FichaRecebimento> bfFichaRecebimento = new ArrayList<>();
+    public static ArrayList<FichaSensorial> bfFichaSensorial = new ArrayList<>();
+    public static ArrayList<Alimento> bfAlimento = new ArrayList<>();
+    public static ArrayList<AlimentoFichaRecebimento> bfAliemntoFichaRecebimento = new ArrayList<>();
+    public static ArrayList<AlimentoFichaSensorial> bfAlimentoFichaSensorial = new ArrayList<>();
+    public static ArrayList<AnaliseSensorial> bfAnaliseSensorial = new ArrayList<>();
+    public static ArrayList<Cuba> bfCuba = new ArrayList<>();
+    public static ArrayList<Funcionario> bfFuncionario = new ArrayList<>();
+    public static ArrayList<Temperatura> bfTemperatura = new ArrayList<>();
+    public static ArrayList<Tickets> bfTickets = new ArrayList<>();
+    
 }

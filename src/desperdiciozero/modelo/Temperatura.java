@@ -12,14 +12,14 @@ import java.util.ArrayList;
  * @author Gabriel jorge
  */
 public class Temperatura {
-    private ArrayList<AlimentoFicha> opc1;
-    private ArrayList<AlimentoFicha> opc2;
+    private ArrayList<AlimentoFichaRecebimento> opc1;
+    private ArrayList<AlimentoFichaRecebimento> opc2;
     private String ocorrencias;
     
     public Temperatura(){}
     
-    public Temperatura(AlimentoFicha alimentoFichaOpc1,
-            AlimentoFicha alimentoFichaOpc2, 
+    public Temperatura(AlimentoFichaRecebimento alimentoFichaOpc1,
+            AlimentoFichaRecebimento alimentoFichaOpc2, 
             String ocorrencias){
     
         this.opc1 = new ArrayList<>();
@@ -29,8 +29,8 @@ public class Temperatura {
         this.ocorrencias = ocorrencias;
     }
     
-    public Temperatura(ArrayList<AlimentoFicha> opc1, 
-            ArrayList<AlimentoFicha> opc2,
+    public Temperatura(ArrayList<AlimentoFichaRecebimento> opc1, 
+            ArrayList<AlimentoFichaRecebimento> opc2,
             String ocorrencias){
         
         this.opc1 = opc1;
@@ -52,24 +52,24 @@ public class Temperatura {
         return this.opc2.get(index).getTemperatura();
     }
     
-    public void addAlimentoFichaOpc1(AlimentoFicha alimentoFicha){
+    public void addAlimentoFichaOpc1(AlimentoFichaRecebimento alimentoFicha){
         this.opc1.add(alimentoFicha);
     }
-    public AlimentoFicha getAlimentoFichaOpc1(int index){
+    public AlimentoFichaRecebimento getAlimentoFichaOpc1(int index){
         return this.opc1.get(index);
     }
     
-    public void addAlimentoFichaOpc2(AlimentoFicha alimentoFicha){
+    public void addAlimentoFichaOpc2(AlimentoFichaRecebimento alimentoFicha){
         this.opc2.add(alimentoFicha);
     }
-    public AlimentoFicha getAlimentoFicha(int index){
+    public AlimentoFichaRecebimento getAlimentoFicha(int index){
         return this.opc2.get(index);
     }
     
-    public ArrayList<AlimentoFicha> getTemperaturasOPC1(){
+    public ArrayList<AlimentoFichaRecebimento> getTemperaturasOPC1(){
         return this.opc1;
     }
-    public ArrayList<AlimentoFicha> getTemperaturasOPC2(){
+    public ArrayList<AlimentoFichaRecebimento> getTemperaturasOPC2(){
         return this.opc2;
     }
     

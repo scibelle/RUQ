@@ -6,7 +6,7 @@
 package desperdiciozero.controle;
 
 import desperdiciozero.controle.bancofake.BDFake;
-import desperdiciozero.modelo.AlimentoFicha;
+import desperdiciozero.modelo.AlimentoFichaRecebimento;
 import desperdiciozero.modelo.FichaRecebimento;
 import desperdiciozero.modelo.Tipo;
 import java.time.LocalDate;
@@ -25,7 +25,7 @@ public class CtlFichaRecebimento {
             double rejeito,
             boolean autorizado,
             double totalRefeicoes,
-            AlimentoFicha alimentoFicha){
+            AlimentoFichaRecebimento alimentoFicha){
         
         BDFake.bfFichaRecebimento.add(new FichaRecebimento(data, 
                 semana, 

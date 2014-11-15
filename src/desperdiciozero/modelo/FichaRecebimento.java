@@ -19,12 +19,12 @@ public class FichaRecebimento {
     private double rejeito;
     private boolean autorizado;
     private double totalRefeicoes;
-    private ArrayList<AlimentoFicha> listaDeAlimentos;
+    private ArrayList<AlimentoFichaRecebimento> listaDeAlimentos;
     
-    public FichaRecebimento(AlimentoFicha alimentoFicha){
+    public FichaRecebimento(AlimentoFichaRecebimento alimentoFicha){
         this.listaDeAlimentos = new ArrayList<>();
         this.listaDeAlimentos.add(alimentoFicha);
-    }
+}
     
     public FichaRecebimento(LocalDate data,
             String semana,
@@ -32,10 +32,10 @@ public class FichaRecebimento {
             double rejeito,
             boolean autorizado,
             double totalRefeicoes,
-            AlimentoFicha alimentoFicha){
+            AlimentoFichaRecebimento alimentoFichaRcebimento){
         
         this.listaDeAlimentos = new ArrayList<>();
-        this.listaDeAlimentos.add(alimentoFicha);
+        this.listaDeAlimentos.add(alimentoFichaRcebimento);
         this.data = data;
         this.semana = semana;
         this.tipo = tipo;
@@ -86,11 +86,11 @@ public class FichaRecebimento {
         return this.totalRefeicoes;
     }
     
-    public void addAlimento(AlimentoFicha alimentoFicha){
+    public void addAlimento(AlimentoFichaRecebimento alimentoFicha){
         this.listaDeAlimentos.add(alimentoFicha);
     }
     
-    public AlimentoFicha getAliemnto(int index){
+    public AlimentoFichaRecebimento getAliemnto(int index){
         return this.listaDeAlimentos.get(index);
     }
 }

@@ -6,17 +6,17 @@
 package desperdiciozero.controle;
 
 import desperdiciozero.controle.bancofake.BDFake;
-import desperdiciozero.modelo.Alimento;
+import desperdiciozero.modelo.AlimentoFichaSensorial;
 
 /**
  *
  * @author Gabriel Jorge
  */
-public class CtlAlimento {
+public class CtlAlimentoFichaAnaliseSensorial {
     
-    public CtlAlimento(){}
+    public CtlAlimentoFichaAnaliseSensorial(){}
     
-    public void cadastrarAlimento(String nome, double percapta){
-        BDFake.bfAlimento.add(new Alimento(nome, percapta));
+    public void cadastrarAlimentoFichaSensorial(String nome, double percapta){
+        BDFake.bfAlimentoFichaSensorial.add(new AlimentoFichaSensorial(nome, percapta));
     }
 }

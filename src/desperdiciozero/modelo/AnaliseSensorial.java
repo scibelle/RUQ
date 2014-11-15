@@ -55,4 +55,12 @@ public class AnaliseSensorial {
     public boolean getConsistencia(){
         return this.consistencia;
     }
+    
+    @Override
+    public String toString(){
+        return "Sabor: " + (this.sabor ? "Aprovado" : "Reprovado")+ "\n"+
+                "Odor: " + (this.odor ? "Aprovado" : "Reprovado")+ "\n"+
+                "Aparência: " + (this.consistencia ? "Aprovado" : "Reprovado")+ "\n"+
+                "Consistência: " + (this.consistencia ? "Aprovado" : "Reprovado");
+    }
 }

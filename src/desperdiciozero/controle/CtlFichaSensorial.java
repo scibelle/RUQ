@@ -6,6 +6,7 @@
 package desperdiciozero.controle;
 
 import desperdiciozero.controle.bancofake.BDFake;
+import desperdiciozero.modelo.AlimentoFichaSensorial;
 import desperdiciozero.modelo.FichaSensorial;
 import desperdiciozero.modelo.Funcionario;
 import desperdiciozero.modelo.Tipo;
@@ -16,6 +17,8 @@ import java.time.LocalTime;
  * @author Gabriel Jorge
  */
 public class CtlFichaSensorial {
+    
+    private FichaSensorial fichaSensorial;
     
     public CtlFichaSensorial(){}
     
@@ -32,5 +35,9 @@ public class CtlFichaSensorial {
                 funcionarioResponsavel, 
                 tipo, 
                 responsavelPelaAvaliacao));
+    }
+    
+    public void seTemperaturaAlimentoFichaSensorial(int index, double temperatura){
+        fichaSensorial.getListaDeAlimentos().get(index).setTemperatura(temperatura);
     }
 }
