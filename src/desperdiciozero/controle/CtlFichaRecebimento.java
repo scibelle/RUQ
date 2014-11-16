@@ -17,6 +17,8 @@ import java.time.LocalDate;
  */
 public class CtlFichaRecebimento {
     
+    private FichaRecebimento fichaRecebimento;
+    
     public CtlFichaRecebimento(){}
     
     public void cadastrarFichaRecebimento(LocalDate data,
@@ -35,5 +37,10 @@ public class CtlFichaRecebimento {
                 totalRefeicoes, 
                 alimentoFicha));
                 
+    }
+    
+     public void addAlimentoFichaRecebimento(AlimentoFichaRecebimento alimento){
+        // TODO: Ajeitar a ficha de recebimento (olhar ficha sensorial para referencia
+        fichaRecebimento.getListaDeAlimentos().add(alimento);
     }
 }

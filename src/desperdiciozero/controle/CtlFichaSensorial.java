@@ -49,4 +49,13 @@ public class CtlFichaSensorial {
     public void seTemperaturaAlimentoFichaSensorial(int index, double temperatura){
         fichaSensorial.getListaDeAlimentos().get(index).setTemperatura(temperatura);
     }
+    
+    //ssisaias - metodos auxiliares
+    public boolean temFicha(){
+        return fichaSensorial != null;
+    }
+    
+    public void limparFicha() throws Exception{
+        fichaSensorial = null;
+    }
 }
