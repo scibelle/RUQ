@@ -42,9 +42,7 @@ public class FichaSensorial {
         
     }
     
-    public void addAlimentoFichaSensorial(AlimentoFichaSensorial alimento){
-        this.listaDeAlimentos.add(alimento);
-    }
+   
     
     public ArrayList<AlimentoFichaSensorial> getListaDeAlimentos(){
         return this.listaDeAlimentos;
@@ -92,6 +90,14 @@ public class FichaSensorial {
         return this.tipo;
     }
     
+    public String listarAlimentos(){
+        String retorno = "";
+        for(AlimentoFichaSensorial alim : listaDeAlimentos){
+            retorno += alim.toString()+ "\n";
+        }
+        return retorno;
+    }
+    
     @Override
     public String toString(){
         return "Cardápio: " + this.cardapio + "\n" +
@@ -99,6 +105,7 @@ public class FichaSensorial {
                 "Início da distribuição: " + this.inicioDaDistribuicao.toString() + "\n" +
                 funcionarioResponsavel.toString() + "\n" +
                 "Tipo: " + this.tipo.toString() + "\n" +
-                this.responsavelPelaAvaliacao.toString();
+                this.responsavelPelaAvaliacao.toString() +
+                "\nAlimentos: " + listarAlimentos();
     }
 }
