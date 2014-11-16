@@ -5,6 +5,7 @@ O sistema tem como objetivo abranger todo o processo de recebimento e avaliaçã
 
 ---------------
 Detalhes:
+
 Armazenamento:
  - Sem banco de dados por enquanto (estamos pensando em usar postgres)
 
