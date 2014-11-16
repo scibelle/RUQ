@@ -6,7 +6,6 @@
 package desperdiciozero.controle;
 
 import desperdiciozero.controle.bancofake.BDFake;
-import desperdiciozero.modelo.Alimento;
 import desperdiciozero.modelo.AlimentoFichaRecebimento;
 import desperdiciozero.modelo.Cuba;
 
@@ -18,20 +17,21 @@ public class CtlAlimentoFichaRecebimento {
     
     public CtlAlimentoFichaRecebimento(){}
     
-    public void cadastrarAlimentoFichaRecebimento(double pesoReal,
+    public void cadastrarAlimentoFichaRecebimento(String nome, double percapta, double pesoTotal, double pesoReal,
             double sobrasSujas, 
             double pesoRealSobrasSujas,
             double porcaoReal,
             double porcaoSobrasSujas,
-            Cuba recipiente,
-            AlimentoFichaRecebimento alimento){
+            Cuba recipiente){
         
-        BDFake.bfAliemntoFichaRecebimento.add(new AlimentoFichaRecebimento(pesoReal,
+        BDFake.bfAliemntoFichaRecebimento.add(new AlimentoFichaRecebimento(nome, 
+                percapta, 
+                pesoTotal, 
+                pesoReal,
                 sobrasSujas, 
                 pesoRealSobrasSujas, 
                 porcaoReal, 
                 porcaoSobrasSujas, 
-                recipiente, 
-                alimento));
+                recipiente));
     }
 }

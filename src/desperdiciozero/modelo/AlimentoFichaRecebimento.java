@@ -10,31 +10,38 @@ package desperdiciozero.modelo;
  * @author Gabriel Jorge
  */
 public class AlimentoFichaRecebimento extends Alimento{
+    private double pesoTotal;
     private double pesoReal;
     private double sobrasSujas;
     private double pesoRealSobrasSujas;
     private double porcoesReal;
     private double porcoesSobrasSujas;
     private Cuba recipiente;
-    private AlimentoFichaRecebimento alimento;
     
     public AlimentoFichaRecebimento(){}
     
-    public AlimentoFichaRecebimento(double pesoReal,
+    public AlimentoFichaRecebimento(String nome, double percapta, double pesoTotal, double pesoReal,
             double sobrasSujas, 
             double pesoRealSobrasSujas,
             double porcaoReal,
             double porcaoSobrasSujas,
-            Cuba recipiente,
-            AlimentoFichaRecebimento alimento){
+            Cuba recipiente){
         
+        super(nome, percapta);
+        this.pesoTotal = pesoTotal;
         this.pesoReal = pesoReal;
         this.sobrasSujas = sobrasSujas;
         this.pesoRealSobrasSujas = pesoRealSobrasSujas;
         this.porcoesReal = porcaoReal;
         this.porcoesSobrasSujas = porcaoSobrasSujas;
         this.recipiente = recipiente;
-        this.alimento = alimento;
+    }
+    
+    public void setPesoTotal(double pesoTotal){
+        this.pesoTotal = pesoTotal;
+    }
+    public double getPesoTotal(){
+        return this.pesoTotal;
     }
     
     public void setPesoReal(double pesoReal){
@@ -77,12 +84,5 @@ public class AlimentoFichaRecebimento extends Alimento{
     }
     public Cuba getRecipiente(){
         return this.recipiente;
-    }
-    
-    public void setAlimento(AlimentoFichaRecebimento alimento){
-        this.alimento = alimento;
-    }
-    public AlimentoFichaRecebimento getAlimento(){
-        return this.alimento;
     }
 }

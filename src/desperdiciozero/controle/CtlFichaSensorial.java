@@ -29,12 +29,21 @@ public class CtlFichaSensorial {
             Tipo tipo,
             Funcionario responsavelPelaAvaliacao){
         
-        BDFake.bfFichaSensorial.add(new FichaSensorial(cardapio, 
+        //15/11/2014 21:22 - ssisaias - Adicionado Instancia da nova ficha como retorno
+        fichaSensorial = new FichaSensorial(cardapio, 
                 horaDeEntrega, 
                 inicioDaDistribuicao, 
                 funcionarioResponsavel, 
                 tipo, 
-                responsavelPelaAvaliacao));
+                responsavelPelaAvaliacao);
+                
+        
+        BDFake.bfFichaSensorial.add(fichaSensorial);
+    }
+    
+    
+     public void addAlimentoFichaSensorial(AlimentoFichaSensorial alimento){
+        fichaSensorial.getListaDeAlimentos().add(alimento);
     }
     
     public void seTemperaturaAlimentoFichaSensorial(int index, double temperatura){

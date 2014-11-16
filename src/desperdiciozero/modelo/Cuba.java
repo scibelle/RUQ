@@ -34,6 +34,6 @@ public class Cuba {
     
     @Override
     public String toString(){
-        return "Nome: " + this.nome +" -- Peso: " + this.peso;
+        return "Cuba: " + this.nome +" -- Peso: " + this.peso;
     }
 }
