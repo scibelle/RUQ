@@ -15,12 +15,15 @@ import desperdiciozero.controle.CtlFichaSensorial;
 import desperdiciozero.controle.CtlFuncionario;
 import desperdiciozero.controle.CtlTickets;
 import desperdiciozero.controle.bancofake.BDFake;
+import desperdiciozero.controle.bancofake.ControleDeArquivos;
+import desperdiciozero.modelo.AlimentoFichaRecebimento;
 import desperdiciozero.modelo.AlimentoFichaSensorial;
 import desperdiciozero.modelo.Cuba;
+import desperdiciozero.modelo.FichaRecebimento;
+import desperdiciozero.modelo.FichaSensorial;
 import desperdiciozero.modelo.Funcionario;
 import desperdiciozero.modelo.Tipo;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -30,6 +33,10 @@ import java.util.Scanner;
  * @author Gabriel Jorge
  */
 public class Testes {
+    public static String caminho = "c:\\Binarios\\";
+    public static String fichaSensorial = "FichaSensorial.sav";
+    public static String fichaRecebimento = "FichaRecebimento.sav";
+    
     // -------------------------------------------------------
     // -----------------------testes--------------------------
     // -------------------------------------------------------
@@ -129,7 +136,6 @@ public class Testes {
         
         // cadastro de uma ficha de analise sensorial
         ctlFichaSensorial = new CtlFichaSensorial();
-        // ver a nova API para se tralhar com datas e horas
         LocalTime horaDeEntrega = LocalTime.of(11, 30);
         LocalTime inicioDaDistribuicao = LocalTime.of(12, 00);
         Funcionario funcionarioResponsavel = BDFake.bfFuncionario.get(0);
@@ -147,11 +153,26 @@ public class Testes {
         ctlFichaSensorial.addAlimentoFichaSensorial(alimento2);
         ctlFichaSensorial.addAlimentoFichaSensorial(alimento3);
         
-        System.out.println("------      -------------Alimentos da Ficha Sensorial Adicionados-----------------");
+        System.out.println("-------------------Alimentos da Ficha Sensorial Adicionados-----------------");
         System.out.println("-------------------------Listagem---------------------------------");
         listar(BDFake.bfFichaSensorial);
+        
+       System.out.println("---------------------------Tentando salvar em arquivo binário-----------------------------");
+        ControleDeArquivos.gravar(BDFake.bfFichaSensorial, caminho+fichaSensorial);
+        System.out.println("---------------------------Arquivo salvo com sucesso-----------------------------");
+        
+        System.out.println("---------------------------Tentando recuperar dados de arquivo----------------------------");
+        ArrayList<FichaSensorial> ficha = (ArrayList<FichaSensorial>) ControleDeArquivos.recuperar(caminho+fichaSensorial);
+        System.out.println("---------------------------Dados recuperados-----------------------------");
+        
+        System.out.println("---------------------------Adicionando dados ao banco-----------------------------");
+        BDFake.bfFichaSensorial = ficha;
+        System.out.println("---------------------------Dados adicionados ao banco-----------------------------");
+        System.out.println("---------------------------Listando dados recuperados-----------------------------");
+        listar(ficha);
     }
     
+    // -----------------cadastro de ficha de recebimento-----------------
     public static void testeCadastroDeFichaDeRecebimento(){
         CtlCuba ctlCuba;
         CtlAlimentoFichaRecebimento ctlAlimentoFichaRecebimento;
@@ -167,6 +188,8 @@ public class Testes {
         ctlAlimentoFichaRecebimento = new CtlAlimentoFichaRecebimento();
         Cuba cuba1 = BDFake.bfCuba.get(0);
         Cuba cuba2 = BDFake.bfCuba.get(1);
+        
+        System.out.println("-------------------------Cubas cadastradas-------------------------------");
         
         // valores base para os cálculos de peso real
         double pesoBase1 = 2000.0;
@@ -194,6 +217,8 @@ public class Testes {
         double totalPorcoes1 = (pesoReal1/percapta1);
         double totalPorcoes2 = (pesoReal2/percapta2);
         
+        System.out.println("-------------------------Cálculos feitos-------------------------------");
+        
         ctlAlimentoFichaRecebimento.cadastrarAlimentoFichaRecebimento("Alimento 1", 
                 percapta1, 
                 pesoBase1, 
@@ -213,12 +238,19 @@ public class Testes {
                 totalPorcoes2, 
                 cuba2);
         
+        AlimentoFichaRecebimento alimento1 = BDFake.bfAliemntoFichaRecebimento.get(0);
+        AlimentoFichaRecebimento alimento2 = BDFake.bfAliemntoFichaRecebimento.get(1);
+        
+        System.out.println("-------------------------Alimentos cadastrados-------------------------------");
+        
         // cadastro de tickets
         ctlTickets = new CtlTickets();
         ctlTickets.cadastrarTotalDeTickets(200, 
                 20, 
                 0, 
                 35);
+        
+        System.out.println("-------------------------Total de tickets cadastrados-------------------------------");
         
         // cadastrar uma ficha de recebimento
         ctlFichaRecebimento = new CtlFichaRecebimento();
@@ -228,10 +260,34 @@ public class Testes {
                 Tipo.ALMOCO, 
                 3000.0, 
                 true, 
-                totalPorcoes2, 
-                null);
+                totalPorcoes2);
+        
+        System.out.println("-------------------------Ficha de recebimento cadastrada-------------------------------");
+        
+        ctlFichaRecebimento.addAlimentoFichaRecebimento(alimento1);
+        ctlFichaRecebimento.addAlimentoFichaRecebimento(alimento2);
+        
+        System.out.println("-------------------------Alimentos cadastrados-------------------------------");
+        
+        System.out.println("-------------------------Listagem-------------------------------");
+        listar(BDFake.bfFichaRecebimento);
+        
+        System.out.println("---------------------------Tentando salvar em arquivo binário-----------------------------");
+        ControleDeArquivos.gravar(BDFake.bfFichaRecebimento, caminho+fichaRecebimento);
+        System.out.println("---------------------------Arquivo salvo com sucesso-----------------------------");
+        
+        System.out.println("---------------------------Tentando recuperar dados de arquivo----------------------------");
+        ArrayList<FichaRecebimento> ficha = (ArrayList<FichaRecebimento>) ControleDeArquivos.recuperar(caminho+fichaRecebimento);
+        System.out.println("---------------------------Dados recuperados-----------------------------");
+        
+        System.out.println("---------------------------Adicionando dados ao banco-----------------------------");
+        BDFake.bfFichaRecebimento = ficha;
+        System.out.println("---------------------------Dados adicionados ao banco-----------------------------");
+        System.out.println("---------------------------Listando dados recuperados-----------------------------");
+        listar(ficha);
     }
     
+    // -----------------listagem-----------------
     public static void listar(ArrayList qualquerCoisa){
         qualquerCoisa.stream().forEach((o) -> {
             System.out.println(o.toString());

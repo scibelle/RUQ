@@ -5,11 +5,13 @@
  */
 package desperdiciozero.modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Gabriel Jorge
  */
-public class Funcionario {
+public class Funcionario implements Serializable{
     private String nome;
     
     public Funcionario(String nome){
