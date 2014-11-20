@@ -5,11 +5,13 @@
  */
 package desperdiciozero.modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Gabriel Jorge
  */
-public enum Tipo {
+public enum Tipo implements Serializable{
     ALMOCO(0), JANTAR(1);
     
     private int VAL;

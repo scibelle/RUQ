@@ -5,11 +5,13 @@
  */
 package desperdiciozero.modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Gabriel Jorge
  */
-public class Cuba {
+public class Cuba implements Serializable{
     private String nome;
     private double peso;
     

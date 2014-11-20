@@ -5,11 +5,13 @@
  */
 package desperdiciozero.modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Gabriel Jorge
  */
-public class Tickets {
+public class Tickets implements Serializable{
     private int estudantes;
     private int professores;
     private int residentes;

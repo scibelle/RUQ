@@ -5,13 +5,14 @@
  */
 package desperdiciozero.modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Gabriel jorge
  */
-public class Temperatura {
+public class Temperatura implements Serializable{
     private ArrayList<AlimentoFichaRecebimento> opc1;
     private ArrayList<AlimentoFichaRecebimento> opc2;
     private String ocorrencias;

@@ -5,6 +5,7 @@
  */
 package desperdiciozero.modelo;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author Gabriel Jorge
  */
-public class FichaSensorial {
+public class FichaSensorial implements Serializable{
     private String cardapio;
     private LocalTime horaDeEntrega;
     private LocalTime inicioDaDistribuicao;
@@ -25,6 +26,16 @@ public class FichaSensorial {
         listaDeAlimentos = new ArrayList<>();
     }
     
+    /**
+     * Contrutor que recebe todos os dados necessários para o cadastro de uma 
+     * ficha sensorial.
+     * @param cardapio
+     * @param horaDeEntrega
+     * @param inicioDaDistribuicao
+     * @param funcionarioResponsavel
+     * @param tipo
+     * @param responsavelPelaAvaliacao 
+     */
     public FichaSensorial(String cardapio,
             LocalTime horaDeEntrega, 
             LocalTime inicioDaDistribuicao,
@@ -41,16 +52,30 @@ public class FichaSensorial {
         this.responsavelPelaAvaliacao = responsavelPelaAvaliacao;
         
     }
+       
+    //--------------------------------------------------------------------------
+    //----------------------------Gets e sets-----------------------------------
+    //--------------------------------------------------------------------------
     
-   
-    
+    /** 
+     * 
+     * @return Um ArrayList com todos os alimentos de uma ficha sensorial.
+     */
     public ArrayList<AlimentoFichaSensorial> getListaDeAlimentos(){
         return this.listaDeAlimentos;
     }
     
+    /**
+     * Recebe uma String com o cardápio do recebimento.
+     * @param cardapio 
+     */
     public void setCardapio(String cardapio){
         this.cardapio = cardapio;
     }
+    /**
+     * 
+     * @return Retorna uma String com o cardápio de um recebimento.
+     */
     public String getCardapio(){
         return this.cardapio;
     }

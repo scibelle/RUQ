@@ -29,7 +29,6 @@ public class CtlFichaSensorial {
             Tipo tipo,
             Funcionario responsavelPelaAvaliacao){
         
-        //15/11/2014 21:22 - ssisaias - Adicionado Instancia da nova ficha como retorno
         fichaSensorial = new FichaSensorial(cardapio, 
                 horaDeEntrega, 
                 inicioDaDistribuicao, 
@@ -50,7 +49,7 @@ public class CtlFichaSensorial {
         fichaSensorial.getListaDeAlimentos().get(index).setTemperatura(temperatura);
     }
     
-    //ssisaias - metodos auxiliares
+    // ssisaias - metodos auxiliares
     public boolean temFicha(){
         return fichaSensorial != null;
     }

@@ -6,13 +6,14 @@
 package desperdiciozero.controle.bancofake;
 
 import desperdiciozero.modelo.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Gabriel Jorge
  */
-public class BDFake {
+public class BDFake implements Serializable{
     public static ArrayList<FichaRecebimento> bfFichaRecebimento = new ArrayList<>();
     public static ArrayList<FichaSensorial> bfFichaSensorial = new ArrayList<>();
     public static ArrayList<Alimento> bfAlimento = new ArrayList<>();

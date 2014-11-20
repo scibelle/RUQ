@@ -5,6 +5,7 @@
  */
 package desperdiciozero.modelo;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author Gabriel Jorge
  */
-public class FichaRecebimento {
+public class FichaRecebimento implements Serializable{
     private LocalDate data;
     private String semana;
     private Tipo tipo;
@@ -31,11 +32,9 @@ public class FichaRecebimento {
             Tipo tipo,
             double rejeito,
             boolean autorizado,
-            double totalRefeicoes,
-            AlimentoFichaRecebimento alimentoFichaRcebimento){
+            double totalRefeicoes){
         
         this.listaDeAlimentos = new ArrayList<>();
-        this.listaDeAlimentos.add(alimentoFichaRcebimento);
         this.data = data;
         this.semana = semana;
         this.tipo = tipo;
@@ -86,11 +85,26 @@ public class FichaRecebimento {
         return this.totalRefeicoes;
     }
     
-    public void addAlimento(AlimentoFichaRecebimento alimentoFicha){
-        this.listaDeAlimentos.add(alimentoFicha);
+    public ArrayList<AlimentoFichaRecebimento> getListaDeAlimentos(){
+        return this.listaDeAlimentos;
     }
     
-    public AlimentoFichaRecebimento getAliemnto(int index){
-        return this.listaDeAlimentos.get(index);
+    public String listarAlimentos(){
+        String retorno = "";
+        for(AlimentoFichaRecebimento alim : listaDeAlimentos){
+            retorno += alim.toString()+ "\n";
+        }
+        return retorno;
+    }
+    
+    @Override
+    public String toString(){
+        return "Data: " + this.data.toString() + "\n" +
+                "Semana: " + this.semana + "\n" +
+                "Tipo: " + this.tipo.toString() + "\n" +
+                "Rejeito: " + this.rejeito + "\n" +
+                "Altorizado: " + (this.autorizado ? "Autorizado" : "Não autorizado") + "\n" +
+                "Total de refeições: " + this.totalRefeicoes + "\n" +
+                "Alimentos: " + listarAlimentos();
     }
 }
