@@ -5,18 +5,31 @@
  */
 package desperdiciozero.modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Gabriel Jorge
  */
-public class AnaliseSensorial {
+public class AnaliseSensorial implements Serializable{
     private boolean sabor;
     private boolean odor;
     private boolean aparencia;
     private boolean consistencia;
     
+    /**
+     * Construtor padrão.
+     */
     public AnaliseSensorial(){}
     
+    /**
+     * Construtor que recebe os dados necessários para o cadastro de analise 
+     * sensorial.
+     * @param sabor
+     * @param odor
+     * @param aparencia
+     * @param consistencia 
+     */
     public AnaliseSensorial(boolean sabor,
             boolean odor,
             boolean aparencia,
@@ -27,6 +40,10 @@ public class AnaliseSensorial {
         this.aparencia = aparencia;
         this.consistencia = consistencia;
     }
+    
+    //--------------------------------------------------------------------------
+    //----------------------------Gets e sets-----------------------------------
+    //--------------------------------------------------------------------------
     
     public void setSabor(boolean avaliacao){
         this.sabor = avaliacao;

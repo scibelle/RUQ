@@ -17,6 +17,14 @@ import java.time.LocalDate;
  */
 public class CtlFichaRecebimento {
     
+    /**
+     * Objeto que vai guardar a instância da nova ficha criada. Isso é necessário 
+     * pois o relacionamento entre ficha de recebimento e alimento da ficha de 
+     * recebimento é um para vários, o que faz com que a instância de um tenha uma 
+     * lista com os vários. Assim, é necessária uma referência como propriedade 
+     * para se ter o poder de manipular a instância de um corretamente e conssequentemente
+     * poder adicioanr mais vários a ela.
+     */
     private FichaRecebimento fichaRecebimento;
     
     public CtlFichaRecebimento(){}
@@ -26,21 +34,34 @@ public class CtlFichaRecebimento {
             Tipo tipo,
             double rejeito,
             boolean autorizado,
-            double totalRefeicoes,
-            AlimentoFichaRecebimento alimentoFicha){
+            double totalRefeicoes){
         
-        BDFake.bfFichaRecebimento.add(new FichaRecebimento(data, 
+        fichaRecebimento = new FichaRecebimento(data, 
                 semana, 
                 tipo, 
                 rejeito, 
                 autorizado, 
-                totalRefeicoes, 
-                alimentoFicha));
+                totalRefeicoes);
+        
+        BDFake.bfFichaRecebimento.add(fichaRecebimento);
                 
     }
     
      public void addAlimentoFichaRecebimento(AlimentoFichaRecebimento alimento){
+<<<<<<< HEAD
         // TODO: Ajeitar a ficha de recebimento (olhar ficha sensorial para referencia
        // fichaRecebimento.getListaDeAlimentos().add(alimento);
+=======
+        // TODO: Ajeitar a ficha de recebimento (olhar ficha sensorial para referencia)
+        fichaRecebimento.getListaDeAlimentos().add(alimento);
+>>>>>>> origin/master
+    }
+     
+    public boolean temFicha(){
+        return fichaRecebimento != null;
+    }
+    
+    public void limparFicha() throws Exception{
+        fichaRecebimento = null;
     }
 }
