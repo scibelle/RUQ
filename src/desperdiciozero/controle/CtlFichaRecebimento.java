@@ -41,6 +41,6 @@ public class CtlFichaRecebimento {
     
      public void addAlimentoFichaRecebimento(AlimentoFichaRecebimento alimento){
         // TODO: Ajeitar a ficha de recebimento (olhar ficha sensorial para referencia
-        fichaRecebimento.getListaDeAlimentos().add(alimento);
+       // fichaRecebimento.getListaDeAlimentos().add(alimento);
     }
 }
