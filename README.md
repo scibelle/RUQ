@@ -7,7 +7,7 @@ O sistema tem como objetivo abranger todo o processo de recebimento e avaliaçã
 Detalhes:
 
 Armazenamento:
- - Sem banco de dados por enquanto (estamos pensando em usar postgres)
+ - Banco de Dados sqlite
 
 Plataforma:
  - Java 1.8 com Swing
@@ -25,7 +25,7 @@ Autores:
 
 ===============
 
-Contato (Favor colocar o nome "DesperdicioZero" no assunto):
+Contato (Favor colocar o nome "RUQ - UFC" no assunto):
 luizisaias@alu.ufc.br
 
 Sinta-se a vontade para fazer alterações :heavy_check_mark:
