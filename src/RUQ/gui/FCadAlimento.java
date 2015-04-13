@@ -42,12 +42,9 @@ public class FCadAlimento extends javax.swing.JFrame {
         txtNomeAlimento = new javax.swing.JTextPane();
         jLabel1 = new javax.swing.JLabel();
         btAddAlimento = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btRemoverAlimento = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jListAlimentos = new javax.swing.JList();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro Alimento v0.9.1  12Abr2015");
@@ -70,11 +67,11 @@ public class FCadAlimento extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("-");
-        jButton2.setToolTipText("Remover o alimento Selecionado");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btRemoverAlimento.setText("-");
+        btRemoverAlimento.setToolTipText("Remover o alimento Selecionado");
+        btRemoverAlimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btRemoverAlimentoActionPerformed(evt);
             }
         });
 
@@ -87,16 +84,6 @@ public class FCadAlimento extends javax.swing.JFrame {
         jListAlimentos.setToolTipText("");
         jScrollPane3.setViewportView(jListAlimentos);
 
-        jMenu1.setText("Opções");
-
-        jMenuItem1.setText("Console");
-        jMenu1.add(jMenuItem1);
-
-        jMenuBar1.add(jMenu1);
-        jMenu1.getAccessibleContext().setAccessibleDescription("");
-
-        setJMenuBar(jMenuBar1);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -105,7 +92,7 @@ public class FCadAlimento extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(btRemoverAlimento)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -122,7 +109,7 @@ public class FCadAlimento extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -130,8 +117,7 @@ public class FCadAlimento extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btRemoverAlimento))
         );
 
         getAccessibleContext().setAccessibleDescription("");
@@ -154,7 +140,7 @@ public class FCadAlimento extends javax.swing.JFrame {
         listarAlimentos();
     }//GEN-LAST:event_formWindowOpened
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btRemoverAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverAlimentoActionPerformed
         if( jListAlimentos.getSelectedIndex() == -1)
         {return;}
         this.setCursor(Cursor.WAIT_CURSOR);
@@ -163,7 +149,7 @@ public class FCadAlimento extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, apagarAlimento(alimento));
         listarAlimentos();
         this.setCursor(Cursor.DEFAULT_CURSOR);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btRemoverAlimentoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,12 +188,9 @@ public class FCadAlimento extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAddAlimento;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btRemoverAlimento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList jListAlimentos;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextPane txtNomeAlimento;
@@ -215,8 +198,7 @@ public class FCadAlimento extends javax.swing.JFrame {
 
 Connection c = null;
 Statement stmt = null;
-    
-//REMOVER ESSE CODIGO DAQUI
+   //TODO: MOVER ESSES METODOS PRO CONTROLE!
     public String cadastrarAlimento(Alimento al){
         try 
         {
