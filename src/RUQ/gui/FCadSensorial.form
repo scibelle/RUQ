@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="grupoTipoRefeicao">
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="title" type="java.lang.String" value="Cadastro de An&#xe1;lise Sensorial  v0.9.1 13Abr2015"/>
@@ -12,6 +16,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -35,18 +42,18 @@
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="txHoraEntrega" min="-2" pref="47" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                      <Component id="jrBtnAlmoco" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="ckAlmoco" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="ckJanta" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jrBtnJantar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" pref="64" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="txHoraDistribuicao" min="-2" pref="52" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane4" pref="272" max="32767" attributes="0"/>
+                      <Component id="jScrollPane4" pref="267" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -63,22 +70,18 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                          <Component id="txHoraEntrega" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ckAlmoco" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="jScrollPane4" alignment="0" max="32767" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="jLabel5" alignment="3" max="32767" attributes="0"/>
-                          <Component id="txHoraDistribuicao" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="ckJanta" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                      <Component id="txHoraEntrega" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jrBtnAlmoco" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jrBtnJantar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jScrollPane4" alignment="0" max="32767" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="jLabel5" alignment="3" max="32767" attributes="0"/>
+                      <Component id="txHoraDistribuicao" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -699,19 +702,6 @@
         <Property name="text" type="java.lang.String" value="Responsavel"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="ckAlmoco">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Almo&#xe7;o"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="ckJanta">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Janta"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ckJantaActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JFormattedTextField" name="txHoraDistribuicao">
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
@@ -725,6 +715,16 @@
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="text" type="java.lang.String" value="Hr. Distrib"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="jrBtnAlmoco">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Almo&#xe7;o"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="jrBtnJantar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Jantar"/>
       </Properties>
     </Component>
   </SubComponents>

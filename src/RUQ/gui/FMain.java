@@ -5,6 +5,10 @@
  */
 package RUQ.gui;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 /**
  *
  * @author Isaias
@@ -27,7 +31,6 @@ public class FMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         btnFichaSensorial = new javax.swing.JButton();
@@ -39,13 +42,16 @@ public class FMain extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
+        jlbDate = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Desperdicio Zero v0.9 06Abr2015");
+        setTitle("Desperdicio Zero v0.9.1 13Abr2015");
         setResizable(false);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("Bem Vindo, Selecione uma opção:");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         btnFichaSensorial.setText("Ficha Sensorial");
         btnFichaSensorial.setToolTipText("");
@@ -159,28 +165,30 @@ public class FMain extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Relatorios", jPanel3);
 
+        jlbDate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jlbDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jlbDate)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
-
-        jLabel1.getAccessibleContext().setAccessibleName("Rélou Selecione uma opção:");
 
         getAccessibleContext().setAccessibleName("");
 
@@ -210,6 +218,12 @@ public class FMain extends javax.swing.JFrame {
        cadSens.setLocationRelativeTo(cadSens);
        cadSens.setVisible(true);
     }//GEN-LAST:event_btnFichaSensorialActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar cal = Calendar.getInstance();
+        jlbDate.setText("Versão Alpha - " + dateFormat.format(cal.getTime())); //2014/08/06 16:00:22
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -254,10 +268,10 @@ public class FMain extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel jlbDate;
     // End of variables declaration//GEN-END:variables
 }

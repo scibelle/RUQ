@@ -5,6 +5,11 @@
  */
 package RUQ.gui;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.UnsupportedLookAndFeelException;
+
 /**
  *
  * @author Isaias
@@ -27,6 +32,7 @@ public class FCadSensorial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grupoTipoRefeicao = new javax.swing.ButtonGroup();
         txHoraEntrega = new javax.swing.JFormattedTextField();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -85,13 +91,18 @@ public class FCadSensorial extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         txNomeResponsavel = new javax.swing.JTextPane();
         jLabel5 = new javax.swing.JLabel();
-        ckAlmoco = new javax.swing.JCheckBox();
-        ckJanta = new javax.swing.JCheckBox();
         txHoraDistribuicao = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
+        jrBtnAlmoco = new javax.swing.JRadioButton();
+        jrBtnJantar = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Análise Sensorial  v0.9.1 13Abr2015");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         txHoraEntrega.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
         txHoraEntrega.addActionListener(new java.awt.event.ActionListener() {
@@ -373,15 +384,6 @@ public class FCadSensorial extends javax.swing.JFrame {
 
         jLabel5.setText("Responsavel");
 
-        ckAlmoco.setText("Almoço");
-
-        ckJanta.setText("Janta");
-        ckJanta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ckJantaActionPerformed(evt);
-            }
-        });
-
         txHoraDistribuicao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
         txHoraDistribuicao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -390,6 +392,10 @@ public class FCadSensorial extends javax.swing.JFrame {
         });
 
         jLabel3.setText("Hr. Distrib");
+
+        jrBtnAlmoco.setText("Almoço");
+
+        jrBtnJantar.setText("Jantar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -403,18 +409,18 @@ public class FCadSensorial extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txHoraEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
+                        .addComponent(jrBtnAlmoco)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ckAlmoco)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ckJanta)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jrBtnJantar)
+                        .addGap(6, 6, 6)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txHoraDistribuicao, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btAdicionar)
@@ -426,19 +432,17 @@ public class FCadSensorial extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txHoraEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(ckAlmoco))
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txHoraDistribuicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ckJanta)
-                        .addComponent(jLabel3)))
+                        .addComponent(txHoraEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)
+                        .addComponent(jrBtnAlmoco)
+                        .addComponent(jrBtnJantar)
+                        .addComponent(jLabel3))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txHoraDistribuicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -461,10 +465,6 @@ public class FCadSensorial extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txHoraDistribuicaoActionPerformed
 
-    private void ckJantaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckJantaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ckJantaActionPerformed
-
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         dispose();
     }//GEN-LAST:event_btSairActionPerformed
@@ -472,6 +472,13 @@ public class FCadSensorial extends javax.swing.JFrame {
     private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox4ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        grupoTipoRefeicao.add(jrBtnAlmoco);
+        grupoTipoRefeicao.add(jrBtnJantar);
+        
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -511,8 +518,7 @@ public class FCadSensorial extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdicionar;
     private javax.swing.JButton btSair;
-    private javax.swing.JCheckBox ckAlmoco;
-    private javax.swing.JCheckBox ckJanta;
+    private javax.swing.ButtonGroup grupoTipoRefeicao;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JCheckBox jCheckBox5;
@@ -567,6 +573,8 @@ public class FCadSensorial extends javax.swing.JFrame {
     private javax.swing.JTextPane jTextPane7;
     private javax.swing.JTextPane jTextPane8;
     private javax.swing.JTextPane jTextPane9;
+    private javax.swing.JRadioButton jrBtnAlmoco;
+    private javax.swing.JRadioButton jrBtnJantar;
     private javax.swing.JFormattedTextField txHoraDistribuicao;
     private javax.swing.JFormattedTextField txHoraEntrega;
     private javax.swing.JTextPane txNomeResponsavel;
