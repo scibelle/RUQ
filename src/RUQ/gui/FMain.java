@@ -45,7 +45,7 @@ public class FMain extends javax.swing.JFrame {
         jlbDate = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Desperdicio Zero v0.9.1 13Abr2015");
+        setTitle("RUQ v0.9.2 14Abr2015");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {

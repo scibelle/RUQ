@@ -1,7 +1,7 @@
-#Projeto Desperdicio Zero
+#Projeto RUQ
 
 
-O sistema tem como objetivo abranger todo o processo de recebimento e avaliação de qualidade das refeições todos os dias na UFC campus de Quixadá, no período do almoço e jantar. 
+O sistema tem como objetivo abranger todo o processo de recebimento e avaliação de qualidade das refeições todos os dias na UFC campus de Quixadá, no período do almoço e jantar.
 
 ---------------
 Detalhes:
@@ -21,7 +21,6 @@ Idealizadores:
 Autores:
  - Gabriel Jorge Tavares
  - Isaias Silva
- 
 
 ===============
 

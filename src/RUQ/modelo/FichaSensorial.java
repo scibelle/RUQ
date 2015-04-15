@@ -14,6 +14,7 @@ import java.util.ArrayList;
  * @author Gabriel Jorge
  */
 public class FichaSensorial implements Serializable{
+    //14Abr2015 - Atualizar esse Model - Checar o banco dzero.db
     private String cardapio;
     private LocalTime horaDeEntrega;
     private LocalTime inicioDaDistribuicao;

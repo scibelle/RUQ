@@ -14,6 +14,7 @@ import java.io.Serializable;
 public class Cuba implements Serializable{
     private String nome;
     private double peso;
+    int ID;
     
     public Cuba(String nome, double peso){
         this.nome = nome;
@@ -37,5 +38,18 @@ public class Cuba implements Serializable{
     @Override
     public String toString(){
         return "Cuba: " + this.nome +" -- Peso: " + this.peso;
+    }
+    /**
+     * @return the ID
+     */
+    public int getID() {
+        return ID;
+    }
+
+    /**
+     * @param ID the ID to set
+     */
+    public void setID(int ID) {
+        this.ID = ID;
     }
 }
