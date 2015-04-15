@@ -39,7 +39,7 @@ public class FMain extends javax.swing.JFrame {
         btnAlimento = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnConsultaFichaSens = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jlbDate = new javax.swing.JLabel();
@@ -53,8 +53,8 @@ public class FMain extends javax.swing.JFrame {
             }
         });
 
-        btnFichaSensorial.setText("Ficha Sensorial");
-        btnFichaSensorial.setToolTipText("");
+        btnFichaSensorial.setText("Análise Sensorial");
+        btnFichaSensorial.setToolTipText("Cadastrar ficha de análise sensorial");
         btnFichaSensorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFichaSensorialActionPerformed(evt);
@@ -62,7 +62,7 @@ public class FMain extends javax.swing.JFrame {
         });
 
         btnFichaRecebimento.setText("Ficha de Recebimento");
-        btnFichaRecebimento.setToolTipText("");
+        btnFichaRecebimento.setToolTipText("Cadastrar nova ficha de recebimento");
         btnFichaRecebimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFichaRecebimentoActionPerformed(evt);
@@ -119,7 +119,12 @@ public class FMain extends javax.swing.JFrame {
 
         jButton1.setText("Protocolo de Recebimento");
 
-        jButton2.setText("Análise Sensorial");
+        btnConsultaFichaSens.setText("Análise Sensorial");
+        btnConsultaFichaSens.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaFichaSensActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -128,7 +133,7 @@ public class FMain extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConsultaFichaSens, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addContainerGap(126, Short.MAX_VALUE))
         );
@@ -136,7 +141,7 @@ public class FMain extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton2)
+                .addComponent(btnConsultaFichaSens)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addContainerGap(49, Short.MAX_VALUE))
@@ -225,6 +230,13 @@ public class FMain extends javax.swing.JFrame {
         jlbDate.setText("Versão Alpha - " + dateFormat.format(cal.getTime())); //2014/08/06 16:00:22
     }//GEN-LAST:event_formWindowOpened
 
+    private void btnConsultaFichaSensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaFichaSensActionPerformed
+        // TODO add your handling code here:
+        FConsAnaliseSensorial consSens = new FConsAnaliseSensorial();
+        consSens.setLocationRelativeTo(consSens);
+        consSens.setVisible(true);
+    }//GEN-LAST:event_btnConsultaFichaSensActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -262,11 +274,11 @@ public class FMain extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlimento;
+    private javax.swing.JButton btnConsultaFichaSens;
     private javax.swing.JButton btnCuba;
     private javax.swing.JButton btnFichaRecebimento;
     private javax.swing.JButton btnFichaSensorial;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

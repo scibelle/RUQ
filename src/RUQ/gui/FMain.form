@@ -112,8 +112,8 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="btnFichaSensorial">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ficha Sensorial"/>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
+                <Property name="text" type="java.lang.String" value="An&#xe1;lise Sensorial"/>
+                <Property name="toolTipText" type="java.lang.String" value="Cadastrar ficha de an&#xe1;lise sensorial"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFichaSensorialActionPerformed"/>
@@ -122,7 +122,7 @@
             <Component class="javax.swing.JButton" name="btnFichaRecebimento">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ficha de Recebimento"/>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
+                <Property name="toolTipText" type="java.lang.String" value="Cadastrar nova ficha de recebimento"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFichaRecebimentoActionPerformed"/>
@@ -163,7 +163,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton2" min="-2" pref="157" max="-2" attributes="0"/>
+                          <Component id="btnConsultaFichaSens" min="-2" pref="157" max="-2" attributes="0"/>
                           <Component id="jButton1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="126" max="32767" attributes="0"/>
@@ -174,7 +174,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnConsultaFichaSens" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="49" max="32767" attributes="0"/>
@@ -188,10 +188,13 @@
                 <Property name="text" type="java.lang.String" value="Protocolo de Recebimento"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="btnConsultaFichaSens">
               <Properties>
                 <Property name="text" type="java.lang.String" value="An&#xe1;lise Sensorial"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultaFichaSensActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
