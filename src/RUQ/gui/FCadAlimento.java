@@ -127,11 +127,14 @@ public class FCadAlimento extends javax.swing.JFrame {
 
     private void btAddAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddAlimentoActionPerformed
         this.setCursor(Cursor.WAIT_CURSOR);
-        Alimento alimento = new Alimento();
-        alimento.setNome(txtNomeAlimento.getText());
-        JOptionPane.showMessageDialog(this, cadastrarAlimento(alimento));
-        txtNomeAlimento.setText("");
-        listarAlimentos();
+        if( !txtNomeAlimento.getText().isEmpty())
+        {               
+            Alimento alimento = new Alimento();
+            alimento.setNome(txtNomeAlimento.getText());
+            JOptionPane.showMessageDialog(this, cadastrarAlimento(alimento));
+            txtNomeAlimento.setText("");
+            listarAlimentos();
+        }
         this.setCursor(Cursor.DEFAULT_CURSOR);
     }//GEN-LAST:event_btAddAlimentoActionPerformed
 

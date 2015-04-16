@@ -45,6 +45,11 @@ public class FConsAnaliseSensorial extends javax.swing.JFrame {
         jButton2.setText("Nova");
         jButton2.setToolTipText("Abre o cadastro de ficha de analise sensorial");
         jButton2.setPreferredSize(new java.awt.Dimension(60, 60));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Excluir");
         jButton3.setToolTipText("Excluir a ficha selecionada");
@@ -116,6 +121,14 @@ public class FConsAnaliseSensorial extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        FCadSensorial cadSens = new FCadSensorial();
+        //cadSens.setLocationRelativeTo(this);
+        cadSens.setAlwaysOnTop(true);
+        cadSens.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

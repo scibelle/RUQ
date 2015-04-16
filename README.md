@@ -1,6 +1,5 @@
 #Projeto RUQ
 
-
 O sistema tem como objetivo abranger todo o processo de recebimento e avaliação de qualidade das refeições todos os dias na UFC campus de Quixadá, no período do almoço e jantar.
 
 ---------------
@@ -12,6 +11,8 @@ Armazenamento:
 Plataforma:
  - Java 1.8 com Swing
 
+IDE:
+ - NetBeans IDE
 ---------------
 Idealizadores:
  - Gabriel Jorge Tavares
