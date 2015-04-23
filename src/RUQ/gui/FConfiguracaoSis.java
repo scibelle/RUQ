@@ -30,46 +30,11 @@ public class FConfiguracaoSis extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         pnlGuiasCfg1 = new javax.swing.JTabbedPane();
-        jPnlAparencia = new javax.swing.JPanel();
-        jrBtnMetal = new javax.swing.JRadioButton();
-        jrBtnNimbus = new javax.swing.JRadioButton();
         jPnlAbout = new javax.swing.JPanel();
         btnAceitar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Configurações - RUQ");
-
-        jrBtnMetal.setText("Metal");
-
-        jrBtnNimbus.setText("Nimbus");
-        jrBtnNimbus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrBtnNimbusActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPnlAparenciaLayout = new javax.swing.GroupLayout(jPnlAparencia);
-        jPnlAparencia.setLayout(jPnlAparenciaLayout);
-        jPnlAparenciaLayout.setHorizontalGroup(
-            jPnlAparenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPnlAparenciaLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jrBtnMetal)
-                .addGap(18, 18, 18)
-                .addComponent(jrBtnNimbus)
-                .addContainerGap(334, Short.MAX_VALUE))
-        );
-        jPnlAparenciaLayout.setVerticalGroup(
-            jPnlAparenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPnlAparenciaLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jPnlAparenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jrBtnMetal)
-                    .addComponent(jrBtnNimbus))
-                .addContainerGap(235, Short.MAX_VALUE))
-        );
-
-        pnlGuiasCfg1.addTab("Aparencia", new javax.swing.ImageIcon(getClass().getResource("/RUQ/img/pincel1.png")), jPnlAparencia); // NOI18N
 
         javax.swing.GroupLayout jPnlAboutLayout = new javax.swing.GroupLayout(jPnlAbout);
         jPnlAbout.setLayout(jPnlAboutLayout);
@@ -125,10 +90,6 @@ public class FConfiguracaoSis extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jrBtnNimbusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrBtnNimbusActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jrBtnNimbusActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -169,9 +130,6 @@ public class FConfiguracaoSis extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPnlAbout;
-    private javax.swing.JPanel jPnlAparencia;
-    private javax.swing.JRadioButton jrBtnMetal;
-    private javax.swing.JRadioButton jrBtnNimbus;
     private javax.swing.JTabbedPane pnlGuiasCfg1;
     // End of variables declaration//GEN-END:variables
 }

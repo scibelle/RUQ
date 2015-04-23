@@ -160,6 +160,8 @@ public class FCadCubas extends javax.swing.JFrame {
 
     private void btRemoverCubaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverCubaActionPerformed
         // Apagar Cubas
+        if (jListCubas.getSelectedIndex() == -1) 
+        { return; }
         Cuba cu = new Cuba(jListCubas.getSelectedValue().toString(), 0);
         JOptionPane.showMessageDialog(this,apagarCuba(cu));
         listarCubas();
