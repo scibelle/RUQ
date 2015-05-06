@@ -44,3 +44,6 @@ Temporary Items
 .apdisk
 /dist/
 /build/
+
+#Modelos do banco de dados
+/Models/DB

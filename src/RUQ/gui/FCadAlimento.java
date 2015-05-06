@@ -220,7 +220,7 @@ Statement stmt = null;
             return "Alimento Cadastrado";
         } 
         catch (ClassNotFoundException | SQLException e) {
-            return "0 - ERRO AO CADASTRAR USUARIO : " + e.toString();
+            return "0 - ERRO AO CADASTRAR ALIMENTO : " + e.toString();
         }
     }
     public void listarAlimentos(){
@@ -245,7 +245,7 @@ Statement stmt = null;
         } 
         catch (ClassNotFoundException | SQLException e) 
         {
-                JOptionPane.showMessageDialog(this, "0 - ERRO AO LISTAR USUARIOS : " + e.toString());
+                JOptionPane.showMessageDialog(this, "0 - ERRO AO LISTAR ALIMENTOS : " + e.toString());
         }
 
     }
