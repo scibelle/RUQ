@@ -16,12 +16,25 @@ import java.util.ArrayList;
 public class FichaSensorial implements Serializable{
     //14Abr2015 - Atualizar esse Model - Checar o banco dzero.db
     private String cardapio;
-    private LocalTime horaDeEntrega;
-    private LocalTime inicioDaDistribuicao;
-    private Funcionario funcionarioResponsavel;
+    //
+    private String horaDeEntrega;
+    private String dataEntrega;
+    private String dataDistribuicao;
+    private String horaDistribuicao;
+    //
+    private String inicioDaDistribuicao;
+    private Funcionario Responsavel;
     private Tipo tipo;
-    private Funcionario responsavelPelaAvaliacao;
-    private ArrayList<AlimentoFichaSensorial> listaDeAlimentos;
+    //1 verdadeiro e 0 falso
+    private int saborAprovado;
+    private int odorAprovado;
+    private int aparenciaAprovada;
+    private int consistenciaAprovada;
+    //
+    private ArrayList<Alimento> listaDeAlimentos;
+    private String observacao;
+    
+    
     
     public FichaSensorial(){
         listaDeAlimentos = new ArrayList<>();
@@ -38,9 +51,8 @@ public class FichaSensorial implements Serializable{
      * @param responsavelPelaAvaliacao 
      */
     public FichaSensorial(String cardapio,
-            LocalTime horaDeEntrega, 
-            LocalTime inicioDaDistribuicao,
-            Funcionario funcionarioResponsavel,
+            String horaDeEntrega, 
+            String inicioDaDistribuicao,
             Tipo tipo,
             Funcionario responsavelPelaAvaliacao){
         
@@ -48,9 +60,8 @@ public class FichaSensorial implements Serializable{
         this.cardapio = cardapio;
         this.horaDeEntrega = horaDeEntrega;
         this.inicioDaDistribuicao = inicioDaDistribuicao;
-        this.funcionarioResponsavel = funcionarioResponsavel;
+        this.Responsavel = responsavelPelaAvaliacao;
         this.tipo = tipo;
-        this.responsavelPelaAvaliacao = responsavelPelaAvaliacao;
         
     }
        
@@ -62,63 +73,15 @@ public class FichaSensorial implements Serializable{
      * 
      * @return Um ArrayList com todos os alimentos de uma ficha sensorial.
      */
-    public ArrayList<AlimentoFichaSensorial> getListaDeAlimentos(){
+    public ArrayList<Alimento> getListaDeAlimentos(){
         return this.listaDeAlimentos;
     }
     
-    /**
-     * Recebe uma String com o cardápio do recebimento.
-     * @param cardapio 
-     */
-    public void setCardapio(String cardapio){
-        this.cardapio = cardapio;
-    }
-    /**
-     * 
-     * @return Retorna uma String com o cardápio de um recebimento.
-     */
-    public String getCardapio(){
-        return this.cardapio;
-    }
     
-    public void setHorarioDeEntrega(LocalTime horaDeEntrega){
-        this.horaDeEntrega = horaDeEntrega;
-    }
-    public LocalTime getHorarioDeEntrega(){
-        return this.horaDeEntrega;
-    }
-    
-    public void setInicioDaDistribuicao(LocalTime inicioDaDistribuicao){
-        this.inicioDaDistribuicao = inicioDaDistribuicao;
-    }
-    public LocalTime getInicioDaDistribuicao(){
-        return this.inicioDaDistribuicao;
-    }
-    
-    public void setFuncionarioResponsavel(Funcionario responsavel){
-        this.funcionarioResponsavel = responsavel;
-    }
-    public Funcionario getFuncionarioResponsavel(){
-        return this.funcionarioResponsavel;
-    }
-    
-    public void setResponsavelPelaAvaliacao(Funcionario responsavel){
-        this.responsavelPelaAvaliacao = responsavel;
-    }
-    public Funcionario getResponsavelPelaAvaliacao(){
-        return this.responsavelPelaAvaliacao;
-    }
-    
-    public void setTipo(Tipo tipo){
-        this.tipo = tipo;
-    }
-    public Tipo getTipo(){
-        return this.tipo;
-    }
     
     public String listarAlimentos(){
         String retorno = "";
-        for(AlimentoFichaSensorial alim : listaDeAlimentos){
+        for(Alimento alim : getListaDeAlimentos()){
             retorno += alim.toString()+ "\n";
         }
         return retorno;
@@ -126,12 +89,200 @@ public class FichaSensorial implements Serializable{
     
     @Override
     public String toString(){
-        return "Cardápio: " + this.cardapio + "\n" +
-                "Horário de entrega: " + this.horaDeEntrega.toString() + "\n" +
-                "Início da distribuição: " + this.inicioDaDistribuicao.toString() + "\n" +
-                funcionarioResponsavel.toString() + "\n" +
-                "Tipo: " + this.tipo.toString() + "\n" +
-                this.responsavelPelaAvaliacao.toString() +
+        return "Cardápio: " + this.getCardapio() + "\n" +
+                "Horário de entrega: " + this.getHoraDeEntrega().toString() + "\n" +
+                "Início da distribuição: " + this.getInicioDaDistribuicao().toString() + "\n" +
+                getResponsavel().toString() + "\n" +
+                "Tipo: " + this.getTipo().toString() + "\n" +
                 "\nAlimentos: " + listarAlimentos();
+    }
+
+    /**
+     * @return the observacao
+     */
+    public String getObservacao() {
+        return observacao;
+    }
+
+    /**
+     * @param observacao the observacao to set
+     */
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+
+    /**
+     * @return the cardapio
+     */
+    public String getCardapio() {
+        return cardapio;
+    }
+
+    /**
+     * @param cardapio the cardapio to set
+     */
+    public void setCardapio(String cardapio) {
+        this.cardapio = cardapio;
+    }
+
+    /**
+     * @return the horaDeEntrega
+     */
+    public String getHoraDeEntrega() {
+        return horaDeEntrega;
+    }
+
+    /**
+     * @param horaDeEntrega the horaDeEntrega to set
+     */
+    public void setHoraDeEntrega(String horaDeEntrega) {
+        this.horaDeEntrega = horaDeEntrega;
+    }
+
+    /**
+     * @return the dataEntrega
+     */
+    public String getDataEntrega() {
+        return dataEntrega;
+    }
+
+    /**
+     * @param dataEntrega the dataEntrega to set
+     */
+    public void setDataEntrega(String dataEntrega) {
+        this.dataEntrega = dataEntrega;
+    }
+
+    /**
+     * @return the dataDistribuicao
+     */
+    public String getDataDistribuicao() {
+        return dataDistribuicao;
+    }
+
+    /**
+     * @param dataDistribuicao the dataDistribuicao to set
+     */
+    public void setDataDistribuicao(String dataDistribuicao) {
+        this.dataDistribuicao = dataDistribuicao;
+    }
+
+    /**
+     * @return the horaDistribuicao
+     */
+    public String getHoraDistribuicao() {
+        return horaDistribuicao;
+    }
+
+    /**
+     * @param horaDistribuicao the horaDistribuicao to set
+     */
+    public void setHoraDistribuicao(String horaDistribuicao) {
+        this.horaDistribuicao = horaDistribuicao;
+    }
+
+    /**
+     * @return the inicioDaDistribuicao
+     */
+    public String getInicioDaDistribuicao() {
+        return inicioDaDistribuicao;
+    }
+
+    /**
+     * @param inicioDaDistribuicao the inicioDaDistribuicao to set
+     */
+    public void setInicioDaDistribuicao(String inicioDaDistribuicao) {
+        this.inicioDaDistribuicao = inicioDaDistribuicao;
+    }
+
+    /**
+     * @return the Responsavel
+     */
+    public Funcionario getResponsavel() {
+        return Responsavel;
+    }
+
+    /**
+     * @param Responsavel the Responsavel to set
+     */
+    public void setResponsavel(Funcionario Responsavel) {
+        this.Responsavel = Responsavel;
+    }
+
+    /**
+     * @return the tipo
+     */
+    public Tipo getTipo() {
+        return tipo;
+    }
+
+    /**
+     * @param tipo the tipo to set
+     */
+    public void setTipo(Tipo tipo) {
+        this.tipo = tipo;
+    }
+
+    /**
+     * @return the saborAprovado
+     */
+    public int getSaborAprovado() {
+        return saborAprovado;
+    }
+
+    /**
+     * @param saborAprovado the saborAprovado to set
+     */
+    public void setSaborAprovado(int saborAprovado) {
+        this.saborAprovado = saborAprovado;
+    }
+
+    /**
+     * @return the odorAprovado
+     */
+    public int getOdorAprovado() {
+        return odorAprovado;
+    }
+
+    /**
+     * @param odorAprovado the odorAprovado to set
+     */
+    public void setOdorAprovado(int odorAprovado) {
+        this.odorAprovado = odorAprovado;
+    }
+
+    /**
+     * @return the aparenciaAprovada
+     */
+    public int getAparenciaAprovada() {
+        return aparenciaAprovada;
+    }
+
+    /**
+     * @param aparenciaAprovada the aparenciaAprovada to set
+     */
+    public void setAparenciaAprovada(int aparenciaAprovada) {
+        this.aparenciaAprovada = aparenciaAprovada;
+    }
+
+    /**
+     * @return the consistenciaAprovada
+     */
+    public int getConsistenciaAprovada() {
+        return consistenciaAprovada;
+    }
+
+    /**
+     * @param consistenciaAprovada the consistenciaAprovada to set
+     */
+    public void setConsistenciaAprovada(int consistenciaAprovada) {
+        this.consistenciaAprovada = consistenciaAprovada;
+    }
+
+    /**
+     * @param listaDeAlimentos the listaDeAlimentos to set
+     */
+    public void setListaDeAlimentos(ArrayList<Alimento> listaDeAlimentos) {
+        this.listaDeAlimentos = listaDeAlimentos;
     }
 }

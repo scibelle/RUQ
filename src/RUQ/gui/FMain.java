@@ -5,6 +5,7 @@
  */
 package RUQ.gui;
 
+import RUQ.controle.Log;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -20,6 +21,7 @@ public class FMain extends javax.swing.JFrame {
      */
     public FMain() {
         initComponents();
+        Log.writeToLog("Sistema RUQ - Sistema iniciado.");
     }
 
     /**
@@ -45,7 +47,7 @@ public class FMain extends javax.swing.JFrame {
         jlbDate = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("RUQ v0.9.2 14Abr2015");
+        setTitle("RUQ v0.9.7 02Jul2015");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -270,6 +272,8 @@ public class FMain extends javax.swing.JFrame {
                 new FMain().setVisible(true);
             }
         });
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

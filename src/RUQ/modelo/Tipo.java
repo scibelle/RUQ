@@ -20,6 +20,11 @@ public enum Tipo implements Serializable{
         this.VAL = val;
     }
     
+    public int getVal()
+    {
+        return this.VAL;
+    }
+    
     @Override
     public String toString(){
         if(VAL == 0)

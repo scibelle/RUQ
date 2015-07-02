@@ -5,7 +5,6 @@
  */
 package RUQ.controle;
 
-import RUQ.controle.bancofake.BDFake;
 import RUQ.modelo.AlimentoFichaRecebimento;
 import RUQ.modelo.Cuba;
 
@@ -24,7 +23,7 @@ public class CtlAlimentoFichaRecebimento {
             double porcaoSobrasSujas,
             Cuba recipiente){
         
-        BDFake.bfAliemntoFichaRecebimento.add(new AlimentoFichaRecebimento(nome, 
+        /*BDFake.bfAliemntoFichaRecebimento.add(new AlimentoFichaRecebimento(nome, 
                 percapta, 
                 pesoTotal, 
                 pesoReal,
@@ -33,5 +32,6 @@ public class CtlAlimentoFichaRecebimento {
                 porcaoReal, 
                 porcaoSobrasSujas, 
                 recipiente));
+        */
     }
 }

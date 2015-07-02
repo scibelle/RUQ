@@ -5,7 +5,6 @@
  */
 package RUQ.controle;
 
-import RUQ.controle.bancofake.BDFake;
 import RUQ.modelo.Funcionario;
 
 /**
@@ -17,6 +16,6 @@ public class CtlFuncionario {
     public CtlFuncionario(){}
     
     public void cadastrarFuncionario(String nome){
-        BDFake.bfFuncionario.add(new Funcionario(nome));
+        //BDFake.bfFuncionario.add(new Funcionario(nome));
     }
 }

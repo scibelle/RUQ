@@ -5,7 +5,7 @@
  */
 package RUQ.controle;
 
-import RUQ.controle.bancofake.BDFake;
+
 import RUQ.modelo.AlimentoFichaSensorial;
 import RUQ.modelo.FichaSensorial;
 import RUQ.modelo.Funcionario;
@@ -23,21 +23,21 @@ public class CtlFichaSensorial {
     public CtlFichaSensorial(){}
     
     public void cadastrarFichaSensorial(String cardapio, 
-            LocalTime horaDeEntrega, 
-            LocalTime inicioDaDistribuicao,
+            String horaDeEntrega, 
+            String inicioDaDistribuicao,
             Funcionario funcionarioResponsavel,
             Tipo tipo,
             Funcionario responsavelPelaAvaliacao){
         
-        fichaSensorial = new FichaSensorial(cardapio, 
-                horaDeEntrega, 
-                inicioDaDistribuicao, 
-                funcionarioResponsavel, 
-                tipo, 
-                responsavelPelaAvaliacao);
+            //        fichaSensorial = new FichaSensorial(cardapio, 
+            //                horaDeEntrega, 
+            //                inicioDaDistribuicao, 
+            //                funcionarioResponsavel, 
+            //                tipo, 
+            //                responsavelPelaAvaliacao);
                 
         
-        BDFake.bfFichaSensorial.add(fichaSensorial);
+//        BDFake.bfFichaSensorial.add(fichaSensorial);
     }
     
     

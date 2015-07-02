@@ -5,7 +5,6 @@
  */
 package RUQ.controle;
 
-import RUQ.controle.bancofake.BDFake;
 import RUQ.modelo.AnaliseSensorial;
 
 /**
@@ -21,9 +20,10 @@ public class CtlAnaliseSensorial {
             boolean aparencia,
             boolean consistencia){
         
-        BDFake.bfAnaliseSensorial.add(new AnaliseSensorial(sabor, 
+        /*BDFake.bfAnaliseSensorial.add(new AnaliseSensorial(sabor, 
                 odor, 
                 aparencia, 
                 consistencia));
+        */
     }
 }

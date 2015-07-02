@@ -5,7 +5,6 @@
  */
 package RUQ.controle;
 
-import RUQ.controle.bancofake.BDFake;
 import RUQ.modelo.AlimentoFichaRecebimento;
 import RUQ.modelo.FichaRecebimento;
 import RUQ.modelo.Tipo;
@@ -43,7 +42,7 @@ public class CtlFichaRecebimento {
                 autorizado, 
                 totalRefeicoes);
         
-        BDFake.bfFichaRecebimento.add(fichaRecebimento);
+        //BDFake.bfFichaRecebimento.add(fichaRecebimento);
                 
     }
     

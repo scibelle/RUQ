@@ -8,6 +8,9 @@ package RUQ.gui;
 import RUQ.modelo.Alimento;
 import RUQ.modelo.AlimentoFichaSensorial;
 import RUQ.modelo.FichaSensorial;
+import RUQ.modelo.Funcionario;
+import RUQ.modelo.Tipo;
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.List;
 import java.sql.Connection;
@@ -15,11 +18,17 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ButtonModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.PopupMenuListener;
 
@@ -28,13 +37,13 @@ import javax.swing.event.PopupMenuListener;
  * @author Isaias
  */
 public class FCadSensorial extends javax.swing.JFrame {
-
+    String err = "";
     /**
      * Creates new form FCadSensorial
      */
     public FCadSensorial() {
         initComponents();
-        
+        err = "Sqlite.Driver.Error";
     }
 
     /**
@@ -47,7 +56,7 @@ public class FCadSensorial extends javax.swing.JFrame {
     private void initComponents() {
 
         grupoTipoRefeicao = new javax.swing.ButtonGroup();
-        txHoraRecebimento = new javax.swing.JFormattedTextField();
+        txHoraEntrega = new javax.swing.JFormattedTextField();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         chkSabor = new javax.swing.JCheckBox();
@@ -58,7 +67,7 @@ public class FCadSensorial extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        jPanelTemperaturas = new javax.swing.JPanel();
         comboAlimento3 = new javax.swing.JComboBox();
         comboAlimento9 = new javax.swing.JComboBox();
         comboAlimento10 = new javax.swing.JComboBox();
@@ -79,7 +88,7 @@ public class FCadSensorial extends javax.swing.JFrame {
         txAlimento5 = new javax.swing.JTextField();
         txAlimento6 = new javax.swing.JTextField();
         txAlimento9 = new javax.swing.JTextField();
-        tzAlimento8 = new javax.swing.JTextField();
+        txAlimento8 = new javax.swing.JTextField();
         txAlimento7 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane12 = new javax.swing.JScrollPane();
@@ -102,17 +111,17 @@ public class FCadSensorial extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cadastro de Análise Sensorial  v0.9.2 14Abr2015");
+        setTitle("Cadastro de Recebimento  v0.9.7 02Jul2015");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
 
-        txHoraRecebimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        txHoraRecebimento.addActionListener(new java.awt.event.ActionListener() {
+        txHoraEntrega.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        txHoraEntrega.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txHoraRecebimentoActionPerformed(evt);
+                txHoraEntregaActionPerformed(evt);
             }
         });
 
@@ -142,8 +151,9 @@ public class FCadSensorial extends javax.swing.JFrame {
 
         jLabel7.setText("Consistência:");
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Temperaturas"));
+        jPanelTemperaturas.setBorder(javax.swing.BorderFactory.createTitledBorder("Temperaturas"));
 
+        comboAlimento3.setPrototypeDisplayValue("XXXXXX");
         comboAlimento3.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -154,6 +164,7 @@ public class FCadSensorial extends javax.swing.JFrame {
             }
         });
 
+        comboAlimento9.setPrototypeDisplayValue("XXXXXXX");
         comboAlimento9.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -164,6 +175,7 @@ public class FCadSensorial extends javax.swing.JFrame {
             }
         });
 
+        comboAlimento10.setPrototypeDisplayValue("XXXXXXX");
         comboAlimento10.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -174,6 +186,7 @@ public class FCadSensorial extends javax.swing.JFrame {
             }
         });
 
+        comboAlimento4.setPrototypeDisplayValue("XXXXXX");
         comboAlimento4.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -184,6 +197,7 @@ public class FCadSensorial extends javax.swing.JFrame {
             }
         });
 
+        comboAlimento7.setPrototypeDisplayValue("XXXXXXX");
         comboAlimento7.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -194,6 +208,7 @@ public class FCadSensorial extends javax.swing.JFrame {
             }
         });
 
+        comboAlimento6.setPrototypeDisplayValue("XXXXXXX");
         comboAlimento6.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -204,6 +219,7 @@ public class FCadSensorial extends javax.swing.JFrame {
             }
         });
 
+        comboAlimento5.setPrototypeDisplayValue("XXXXXX");
         comboAlimento5.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -214,6 +230,7 @@ public class FCadSensorial extends javax.swing.JFrame {
             }
         });
 
+        comboAlimento8.setPrototypeDisplayValue("XXXXXXX");
         comboAlimento8.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -224,6 +241,7 @@ public class FCadSensorial extends javax.swing.JFrame {
             }
         });
 
+        comboAlimento11.setPrototypeDisplayValue("XXXXXXX");
         comboAlimento11.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -234,6 +252,7 @@ public class FCadSensorial extends javax.swing.JFrame {
             }
         });
 
+        comboAlimento1.setPrototypeDisplayValue("XXXXXX");
         comboAlimento1.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -244,6 +263,7 @@ public class FCadSensorial extends javax.swing.JFrame {
             }
         });
 
+        comboAlimento2.setPrototypeDisplayValue("XXXXXX");
         comboAlimento2.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -258,72 +278,72 @@ public class FCadSensorial extends javax.swing.JFrame {
 
         txAlimento6.setToolTipText("");
 
-        tzAlimento8.setToolTipText("");
+        txAlimento8.setToolTipText("");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelTemperaturasLayout = new javax.swing.GroupLayout(jPanelTemperaturas);
+        jPanelTemperaturas.setLayout(jPanelTemperaturasLayout);
+        jPanelTemperaturasLayout.setHorizontalGroup(
+            jPanelTemperaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTemperaturasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanelTemperaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(comboAlimento1, 0, 109, Short.MAX_VALUE)
                     .addComponent(comboAlimento2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelTemperaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txOpcao1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txOpcao2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelTemperaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(comboAlimento4, 0, 73, Short.MAX_VALUE)
                     .addComponent(comboAlimento3, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(comboAlimento5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelTemperaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txAlimento1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txAlimento2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txAlimento3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanelTemperaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(comboAlimento7, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(comboAlimento6, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(comboAlimento8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelTemperaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txAlimento4, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txAlimento5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txAlimento6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanelTemperaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelTemperaturasLayout.createSequentialGroup()
+                        .addGroup(jPanelTemperaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(comboAlimento10, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(comboAlimento9, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tzAlimento8, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanelTemperaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txAlimento8, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txAlimento7, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanelTemperaturasLayout.createSequentialGroup()
                         .addComponent(comboAlimento11, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txAlimento9, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jPanelTemperaturasLayout.setVerticalGroup(
+            jPanelTemperaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTemperaturasLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelTemperaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(comboAlimento3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(jPanelTemperaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(comboAlimento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txOpcao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(jPanelTemperaturasLayout.createSequentialGroup()
+                        .addGroup(jPanelTemperaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(comboAlimento6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txAlimento4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(13, 13, 13)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanelTemperaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(comboAlimento7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txAlimento5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txAlimento2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -331,21 +351,21 @@ public class FCadSensorial extends javax.swing.JFrame {
                             .addComponent(txOpcao2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(comboAlimento2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(11, 11, 11)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanelTemperaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(comboAlimento8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txAlimento6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txAlimento3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(comboAlimento5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(jPanelTemperaturasLayout.createSequentialGroup()
+                        .addGroup(jPanelTemperaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(comboAlimento9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txAlimento7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(13, 13, 13)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanelTemperaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(comboAlimento10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tzAlimento8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txAlimento8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(13, 13, 13)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanelTemperaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(comboAlimento11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txAlimento9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(txAlimento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -394,7 +414,7 @@ public class FCadSensorial extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelTemperaturas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -438,7 +458,7 @@ public class FCadSensorial extends javax.swing.JFrame {
                             .addComponent(chkConsistencia)))
                     .addComponent(jPnlImagemBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelTemperaturas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -484,6 +504,11 @@ public class FCadSensorial extends javax.swing.JFrame {
         jLabel9.setText("Data distribuição:");
 
         txDataDistribuicao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        txDataDistribuicao.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txDataDistribuicaoFocusGained(evt);
+            }
+        });
 
         jLabel10.setText("Cardápio.:");
 
@@ -515,7 +540,7 @@ public class FCadSensorial extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txHoraRecebimento, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txHoraEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9)
                         .addComponent(jrBtnAlmoco)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -551,7 +576,7 @@ public class FCadSensorial extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txHoraRecebimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txHoraEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel2)
                         .addComponent(jrBtnAlmoco)
                         .addComponent(jrBtnJantar)
@@ -574,9 +599,9 @@ public class FCadSensorial extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txHoraRecebimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txHoraRecebimentoActionPerformed
+    private void txHoraEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txHoraEntregaActionPerformed
        
-    }//GEN-LAST:event_txHoraRecebimentoActionPerformed
+    }//GEN-LAST:event_txHoraEntregaActionPerformed
 
     private void txHoraDistribuicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txHoraDistribuicaoActionPerformed
         // TODO add your handling code here:
@@ -596,21 +621,149 @@ public class FCadSensorial extends javax.swing.JFrame {
 
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
         // TODO add your handling code here:
-        // Validar a ficha
-        if(validarFicha())
+        // Validar a ficha]
+        //return;
+        try{
+            
+        if(true)//(validarFicha())
         {
             //Cadastrar a ficha
             //INSERT INTO `TblFichaSensorial`(`CodigoFicha`,`DataCriacao`,`HoraCriacao`,`DataRecebimento`,`HoraRecebimento`,`TipoRefeicao`,`HoraDistribuicao`,`NomeResponsavel`,`SaborAprovado`,`OdorAprovado`,`AparenciaAprovado`,`ConsistenciaAprovado`,`Observacoes`) VALUES (1,NULL,NULL,'','',0,NULL,NULL,0,0,0,0,NULL);
             //FERRARI
-            this.setCursor(Cursor.WAIT_CURSOR);           
+            this.setCursor(Cursor.WAIT_CURSOR);       
+                Funcionario fun = new Funcionario(txNomeResponsavel.getText());
                 FichaSensorial fichaSen = new FichaSensorial();
+                fichaSen.setCardapio(txTituloCardapio.getText());
+                fichaSen.setDataEntrega(txDataEntrega.getText());
+                fichaSen.setHoraDeEntrega(txHoraEntrega.getText());
+                fichaSen.setDataDistribuicao(txDataDistribuicao.getText());
+                fichaSen.setHoraDistribuicao(txHoraDistribuicao.getText());
+                //Tipo refeicao
                 
+                if (jrBtnAlmoco.isSelected()) {
+                    fichaSen.setTipo(Tipo.ALMOCO);
+                }
+                else{
+                    fichaSen.setTipo(Tipo.JANTAR);
+                }
+                //
+                //tem operador ternario nessa bosta?
+                fichaSen.setResponsavel(fun);
+                if(chkSabor.isSelected()){
+                    fichaSen.setSaborAprovado(1);
+                }
+                else{
+                    fichaSen.setSaborAprovado(0);
+                }
+                if(chkOdor.isSelected()){
+                    fichaSen.setOdorAprovado(1);
+                }
+                else{
+                    fichaSen.setOdorAprovado(0);
+                }
+                if(chkAparencia.isSelected()){
+                    fichaSen.setAparenciaAprovada(1);
+                }
+                else{
+                    fichaSen.setAparenciaAprovada(0);
+                }
+                if(chkConsistencia.isSelected()){
+                    fichaSen.setConsistenciaAprovada(1);
+                }
+                else{
+                    fichaSen.setConsistenciaAprovada(0);
+                }
+                fichaSen.setObservacao(txObservacoes.getText());
+                //Preencher os alimentos - (algum lugar no meu coração, sei que posso transformar isso num loop :)
+                Alimento al = null;
+                ArrayList<Alimento> listaDeAlimentos = new ArrayList<>();
+                if(comboAlimento1.getSelectedItem() != null && !(comboAlimento1.getSelectedItem().toString().equals(""))){
+                    al = new Alimento();
+                    al.setNome(comboAlimento1.getSelectedItem().toString());
+                    al.setTemperatura(Double.parseDouble(txOpcao1.getText()));
+                }
+                listaDeAlimentos.add(al);
+                if(comboAlimento2.getSelectedItem() != null && !(comboAlimento2.getSelectedItem().toString().equals(""))){
+                    al = new Alimento();
+                    al.setNome(comboAlimento2.getSelectedItem().toString());
+                    al.setTemperatura(Double.parseDouble(txOpcao2.getText()));
+                }
+                listaDeAlimentos.add(al);
+                if(comboAlimento3.getSelectedItem() != null && !(comboAlimento3.getSelectedItem().toString().equals(""))){
+                    al = new Alimento();
+                    al.setNome(comboAlimento3.getSelectedItem().toString());
+                    al.setTemperatura(Double.parseDouble(txAlimento1.getText()));    
+                }
+                listaDeAlimentos.add(al);
+                if(comboAlimento4.getSelectedItem() != null && !(comboAlimento4.getSelectedItem().toString().equals(""))){
+                    al = new Alimento();
+                    al.setNome(comboAlimento4.getSelectedItem().toString());
+                    al.setTemperatura(Double.parseDouble(txAlimento2.getText()));
+                }
+                listaDeAlimentos.add(al);
+                if(comboAlimento5.getSelectedItem() != null && !(comboAlimento5.getSelectedItem().toString().equals(""))){
+                    al = new Alimento();
+                    al.setNome(comboAlimento5.getSelectedItem().toString());
+                    al.setTemperatura(Double.parseDouble(txAlimento3.getText()));
+                }
+                listaDeAlimentos.add(al);
+                if(comboAlimento6.getSelectedItem() != null && !(comboAlimento6.getSelectedItem().toString().equals(""))){
+                    al = new Alimento();
+                    al.setNome(comboAlimento6.getSelectedItem().toString());
+                    al.setTemperatura(Double.parseDouble(txAlimento4.getText()));
+                }
+                listaDeAlimentos.add(al);
+                if(comboAlimento7.getSelectedItem() != null && !(comboAlimento7.getSelectedItem().toString().equals(""))){
+                    al = new Alimento();
+                    al.setNome(comboAlimento7.getSelectedItem().toString());
+                    al.setTemperatura(Double.parseDouble(txAlimento5.getText()));
+                    
+                }
+                listaDeAlimentos.add(al);
+                if(comboAlimento8.getSelectedItem() != null && !(comboAlimento8.getSelectedItem().toString().equals(""))){
+                    al = new Alimento();
+                    al.setNome(comboAlimento8.getSelectedItem().toString());
+                    al.setTemperatura(Double.parseDouble(txAlimento6.getText()));
+                    
+                }
+                listaDeAlimentos.add(al);
+                if(comboAlimento9.getSelectedItem() != null && !(comboAlimento9.getSelectedItem().toString().equals(""))){
+                    al = new Alimento();
+                    al.setNome(comboAlimento9.getSelectedItem().toString());
+                    al.setTemperatura(Double.parseDouble(txAlimento7.getText()));
+                    
+                }
+                listaDeAlimentos.add(al);
+                if(comboAlimento10.getSelectedItem() != null && !(comboAlimento10.getSelectedItem().toString().equals(""))){
+                    al = new Alimento();
+                    al.setNome(comboAlimento10.getSelectedItem().toString());
+                    al.setTemperatura(Double.parseDouble(txAlimento8.getText()));
+                    
+                }
+                listaDeAlimentos.add(al);
+                if(comboAlimento11.getSelectedItem() != null && !(comboAlimento11.getSelectedItem().toString().equals(""))){
+                    al = new Alimento();
+                    al.setNome(comboAlimento11.getSelectedItem().toString());
+                    al.setTemperatura(Double.parseDouble(txAlimento9.getText()));
+                    
+                }
+                listaDeAlimentos.add(al);
+                //
+                fichaSen.setListaDeAlimentos(listaDeAlimentos);
                 JOptionPane.showMessageDialog(this, cadastrarFichaSen(fichaSen));
+                //Cadasrar alimentos
+                JOptionPane.showMessageDialog(this, cadastrarAlimentosFicha(fichaSen));
                 //Limpar a tela!
-            
+                
+                //Cadastrar os alimentos//Transformar num loop para os controles.
+                
             this.setCursor(Cursor.DEFAULT_CURSOR);
         }
         
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao adicionar ficha. " + e.getMessage());
+        }
     }//GEN-LAST:event_btAdicionarActionPerformed
 
     private void comboAlimento1PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_comboAlimento1PopupMenuWillBecomeVisible
@@ -619,6 +772,7 @@ public class FCadSensorial extends javax.swing.JFrame {
         comboAlimento1.removeAllItems();
         listarAlimentosCombo(comboAlimento1);
         this.setCursor(Cursor.DEFAULT_CURSOR);
+        zerarTemperaturas();
     }//GEN-LAST:event_comboAlimento1PopupMenuWillBecomeVisible
 
     private void comboAlimento2PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_comboAlimento2PopupMenuWillBecomeVisible
@@ -701,6 +855,13 @@ public class FCadSensorial extends javax.swing.JFrame {
         this.setCursor(Cursor.DEFAULT_CURSOR);
     }//GEN-LAST:event_comboAlimento11PopupMenuWillBecomeVisible
 
+    private void txDataDistribuicaoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txDataDistribuicaoFocusGained
+        // TODO add your handling code here:
+        if (!txDataEntrega.getText().isEmpty()) {
+            txDataDistribuicao.setText(txDataEntrega.getText());
+        }
+    }//GEN-LAST:event_txDataDistribuicaoFocusGained
+
     /**
      * @param args the command line arguments
      */
@@ -767,8 +928,8 @@ public class FCadSensorial extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanelTemperaturas;
     private javax.swing.JPanel jPnlImagemBack;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JRadioButton jrBtnAlmoco;
@@ -780,22 +941,22 @@ public class FCadSensorial extends javax.swing.JFrame {
     private javax.swing.JTextField txAlimento5;
     private javax.swing.JTextField txAlimento6;
     private javax.swing.JTextField txAlimento7;
+    private javax.swing.JTextField txAlimento8;
     private javax.swing.JTextField txAlimento9;
     private javax.swing.JFormattedTextField txDataDistribuicao;
     private javax.swing.JFormattedTextField txDataEntrega;
     private javax.swing.JFormattedTextField txHoraDistribuicao;
-    private javax.swing.JFormattedTextField txHoraRecebimento;
+    private javax.swing.JFormattedTextField txHoraEntrega;
     private javax.swing.JTextField txNomeResponsavel;
     private javax.swing.JTextArea txObservacoes;
     private javax.swing.JTextField txOpcao1;
     private javax.swing.JTextField txOpcao2;
     private javax.swing.JTextField txTituloCardapio;
-    private javax.swing.JTextField tzAlimento8;
     // End of variables declaration//GEN-END:variables
 
     boolean validarFicha()
     {
-        if(txHoraRecebimento.getText().isEmpty())
+        if(txHoraEntrega.getText().isEmpty())
         {
             JOptionPane.showMessageDialog(this,"Digite a hora da entrega.");
             return false;
@@ -807,6 +968,10 @@ public class FCadSensorial extends javax.swing.JFrame {
         //if (grupoTipoRefeicao.) {
         //    
         //}
+        if (txNomeResponsavel.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this,"Digite o nome do responsavel.");
+            return false;
+        }
         return true;
     }
     
@@ -815,28 +980,72 @@ public class FCadSensorial extends javax.swing.JFrame {
     
     //TODO: ALGUMA ALMA CARIDOSA QUE ENTENDE O DRAMA DO DIA A DIA UNIVERSITARIO
     //POR AMOR A ALÁ, MOVA ESSES METODOS PARA O MODELO/ENTIDADE
-    public String cadastrarFichaSen(FichaSensorial ficha){
+    public String cadastrarFichaSen(FichaSensorial ficha) throws ClassNotFoundException, SQLException{
         try 
         {
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            Calendar cal = Calendar.getInstance();
+            
+            String dataCriacao = dateFormat.format(cal.getTime());
+            dateFormat = new SimpleDateFormat("HH:mm:ss");
+            String horaCricao = dateFormat.format(cal.getTime());
+            
             //banco de dados
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:dzero.db");
             c.setAutoCommit(false); //desliga transacao automatica
             stmt = c.createStatement(); //prepara a query
-
+            
             //Obs, os \" são para as aspas fazer parte da string
-            String sql = "INSERT INTO TblAlimento VALUES (@idalimento,\""+ al.getNome() +"\");";
+            String sql = "INSERT INTO TblFichaSensorial VALUES (@CodigoFicha,\""+ ficha.getCardapio() +"\",\"" + dataCriacao + "\",\"" + horaCricao + "\", \"" + ficha.getDataEntrega() + "\", \"" +ficha.getHoraDeEntrega() + "\", " + ficha.getTipo().getVal() + " , \"" + ficha.getHoraDistribuicao() + "\" ,\"" + ficha.getDataDistribuicao()+ "\", \"" + ficha.getResponsavel().getNome() + "\", " + ficha.getSaborAprovado() + " ," + ficha.getOdorAprovado() + "," + ficha.getAparenciaAprovada()+ ", " + ficha.getConsistenciaAprovada()+ " , '" + ficha.getObservacao() +"');";                              
 
             stmt.executeUpdate(sql);
             stmt.close();
             c.commit();
             c.close();
-            return "Alimento Cadastrado";
+            return "Ficha Cadastrada!";
         } 
         catch (ClassNotFoundException | SQLException e) {
-            return "0 - ERRO AO CADASTRAR ALIMENTO : " + e.toString();
+            throw e;
+            //return "0 - ERRO AO CADASTRAR Ficha : " + e.toString();
         }
     }
+    
+    public String cadastrarAlimentosFicha(FichaSensorial ficha) throws ClassNotFoundException, SQLException{
+        try 
+        {
+            
+            //banco de dados
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:dzero.db");
+            c.setAutoCommit(false); //desliga transacao automatica
+            stmt = c.createStatement(); //prepara a query
+            
+            //PRECISO DO ID DOS ALIMENTOS E DA FICHA :S
+            //Obs, os \" são para as aspas fazer parte da string
+            String sql = "INSERT INTO TblFichaSensorialAlimento VALUES ();";                              
+
+            stmt.executeUpdate(sql);
+            stmt.close();
+            c.commit();
+            c.close();
+            return "Alimentos Adicionados!";
+        } 
+        catch (ClassNotFoundException | SQLException e) {
+            throw e;
+            //return "0 - ERRO AO CADASTRAR Ficha : " + e.toString();
+        }
+    }
+    
+    public int getUltimoID() {
+        //final String MY_QUERY = "SELECT MAX(_id) FROM " + DATABASE_TABLE5;
+        //Cursor cur = c.rawQuery(MY_QUERY, null);
+        //cur.moveToFirst();
+        //int ID = cur.getInt(0);
+        //cur.close();
+        //return ID;
+        return 0;
+    }  
     
     public void listarAlimentosCombo( JComboBox combo){
         //DefaultListModel modelListaAlimentos = new DefaultListModel();
@@ -864,5 +1073,14 @@ public class FCadSensorial extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "0 - ERRO AO LISTAR ALIMENTOS : " + e.toString());
         }
 
+    }
+
+    private void zerarTemperaturas() {
+        for (Component cp : jPanelTemperaturas.getComponents()) {
+            if(cp instanceof JTextField){
+                ((JTextField)cp).setText("0");
+            }
+                
+        }
     }
 }

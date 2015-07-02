@@ -35,8 +35,12 @@ public class FConsAnaliseSensorial extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Consulta de Análise Sensorial  - v0.9.1 14Abr2015");
+        setTitle("Consulta de Análise Sensorial  - v0.9.2 30Mai2015");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jButton1.setText("Editar");
         jButton1.setToolTipText("Editar a ficha selecionada no cadastro de ficha sensorial");
@@ -130,6 +134,12 @@ public class FConsAnaliseSensorial extends javax.swing.JFrame {
         cadSens.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        //CARREGAR AS FICHAS JA CRIADAS!
+        
+    }//GEN-LAST:event_formWindowOpened
+
     /**
      * @param args the command line arguments
      */
@@ -159,7 +169,8 @@ public class FConsAnaliseSensorial extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+            public void run() 
+            {
                 new FConsAnaliseSensorial().setVisible(true);
             }
         });
@@ -174,4 +185,7 @@ public class FConsAnaliseSensorial extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+    
+    
+    
 }

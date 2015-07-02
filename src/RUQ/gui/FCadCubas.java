@@ -213,7 +213,7 @@ public class FCadCubas extends javax.swing.JFrame {
             c.setAutoCommit(false); //desliga transacao automatica
             stmt = c.createStatement(); //prepara a query
             //Obs, os \" são para as aspas fazer parte da string
-            String sql = "INSERT INTO TblCuba VALUES (\""+ cba.getNome() +"\", " + cba.getPeso() + ");";
+            String sql = "INSERT INTO TblCuba VALUES (@idcuba, \""+ cba.getNome() +"\", " + cba.getPeso() + ");";
 
             stmt.executeUpdate(sql);
             stmt.close();
@@ -222,7 +222,7 @@ public class FCadCubas extends javax.swing.JFrame {
             return "Inserido";
         } 
         catch (ClassNotFoundException | SQLException e) {
-            return "0 - ERRO AO CADASTRAR USUARIO : " + e.toString();
+            return "0 - ERRO AO CADASTRAR Recipiente : " + e.toString();
         }
     }
     public void listarCubas(){
@@ -247,7 +247,7 @@ public class FCadCubas extends javax.swing.JFrame {
         } 
         catch (ClassNotFoundException | SQLException e) 
         {
-                JOptionPane.showMessageDialog(this, "0 - ERRO AO LISTAR USUARIOS : " + e.toString());
+                JOptionPane.showMessageDialog(this, "0 - ERRO AO LISTAR Recipientes : " + e.toString());
         }
 
     }

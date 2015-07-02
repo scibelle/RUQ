@@ -5,7 +5,6 @@
  */
 package RUQ.controle;
 
-import RUQ.controle.bancofake.BDFake;
 import RUQ.modelo.Tickets;
 
 /**
@@ -17,6 +16,6 @@ public class CtlTickets {
     public CtlTickets(){}
     
     public void cadastrarTotalDeTickets(int estudantes, int professores, int residentes, int funcionarios){
-        BDFake.bfTickets.add(new Tickets(estudantes, professores, residentes, funcionarios));
+        //BDFake.bfTickets.add(new Tickets(estudantes, professores, residentes, funcionarios));
     }
 }

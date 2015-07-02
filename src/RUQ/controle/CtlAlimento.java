@@ -5,7 +5,6 @@
  */
 package RUQ.controle;
 
-import RUQ.controle.bancofake.BDFake;
 import RUQ.modelo.Alimento;
 
 /**
@@ -17,6 +16,6 @@ public class CtlAlimento {
     public CtlAlimento(){}
     
     public void cadastrarAlimento(String nome, double percapta){
-        BDFake.bfAlimento.add(new Alimento(nome, percapta));
+        //BDFake.bfAlimento.add(new Alimento(nome, percapta));
     }
 }

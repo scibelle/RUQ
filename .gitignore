@@ -47,3 +47,6 @@ Temporary Items
 
 #Modelos do banco de dados
 /Models/DB
+
+#onde ficam os logs
+/logs/

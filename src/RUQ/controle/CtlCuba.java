@@ -5,7 +5,6 @@
  */
 package RUQ.controle;
 
-import RUQ.controle.bancofake.BDFake;
 import RUQ.modelo.Cuba;
 
 /**
@@ -17,6 +16,6 @@ public class CtlCuba {
     public CtlCuba(){}
     
     public void cadastrarCuba(String nome, double peso){
-        BDFake.bfCuba.add(new Cuba(nome, peso));
+        //BDFake.bfCuba.add(new Cuba(nome, peso));
     }
 }

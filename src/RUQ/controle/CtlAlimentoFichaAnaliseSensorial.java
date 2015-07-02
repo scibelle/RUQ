@@ -5,7 +5,6 @@
  */
 package RUQ.controle;
 
-import RUQ.controle.bancofake.BDFake;
 import RUQ.modelo.AlimentoFichaSensorial;
 
 /**
@@ -17,6 +16,6 @@ public class CtlAlimentoFichaAnaliseSensorial {
     public CtlAlimentoFichaAnaliseSensorial(){}
     
     public void cadastrarAlimentoFichaSensorial(String nome, double percapta){
-        BDFake.bfAlimentoFichaSensorial.add(new AlimentoFichaSensorial(nome, percapta));
+        //BDFake.bfAlimentoFichaSensorial.add(new AlimentoFichaSensorial(nome, percapta));
     }
 }
