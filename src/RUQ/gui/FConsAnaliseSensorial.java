@@ -5,6 +5,19 @@
  */
 package RUQ.gui;
 
+import com.sun.media.sound.ModelOscillator;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author isaia_001
@@ -33,9 +46,9 @@ public class FConsAnaliseSensorial extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTblFichaSensorial = new javax.swing.JTable();
 
-        setTitle("Consulta de Análise Sensorial  - v0.9.2 30Mai2015");
+        setTitle("Consulta de Análise Sensorial  - v0.9.8");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -44,6 +57,7 @@ public class FConsAnaliseSensorial extends javax.swing.JFrame {
 
         jButton1.setText("Editar");
         jButton1.setToolTipText("Editar a ficha selecionada no cadastro de ficha sensorial");
+        jButton1.setEnabled(false);
         jButton1.setPreferredSize(new java.awt.Dimension(60, 60));
 
         jButton2.setText("Nova");
@@ -57,6 +71,7 @@ public class FConsAnaliseSensorial extends javax.swing.JFrame {
 
         jButton3.setText("Excluir");
         jButton3.setToolTipText("Excluir a ficha selecionada");
+        jButton3.setEnabled(false);
         jButton3.setPreferredSize(new java.awt.Dimension(60, 60));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -80,7 +95,7 @@ public class FConsAnaliseSensorial extends javax.swing.JFrame {
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTblFichaSensorial.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -91,7 +106,7 @@ public class FConsAnaliseSensorial extends javax.swing.JFrame {
                 "Número Ficha", "Data Criação", "Tipo Refeição"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTblFichaSensorial);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -136,7 +151,9 @@ public class FConsAnaliseSensorial extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        //CARREGAR AS FICHAS JA CRIADAS!
+        //CARREGAR AS FICHAS JA CRIADAS no grid!
+        
+        carregarFichas();
         
     }//GEN-LAST:event_formWindowOpened
 
@@ -183,9 +200,72 @@ public class FConsAnaliseSensorial extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTblFichaSensorial;
     // End of variables declaration//GEN-END:variables
+    Connection c = null;
+    Statement stmt = null;
+    private void carregarFichas() {
+       //Carregar as fichas;
+       try 
+        {
+            //banco de dados
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:dzero.db");
+            stmt = c.createStatement(); //prepara a query
+            //Obs, os \" são para as aspas fazer parte da string
+            String sql = "SELECT CodigoFicha,NomeCardapio,DataRecebimento,NomeResponsavel FROM TblFichaSensorial;";
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            jTblFichaSensorial.setModel(buildTableModel(rs));
+            jTblFichaSensorial.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            while (rs.next()) 
+            {
+                //txAreaAlimento.setText(txAreaAlimento.getText() + al.getNome() + "\n");
+                //modelListaAlimentos.addElement(rs.getString("NomeAlimento"));
+            }
+            //jListAlimentos.setModel(modelListaAlimentos);
+            stmt.close();
+        } 
+        catch (ClassNotFoundException | SQLException e) 
+        {
+                JOptionPane.showMessageDialog(this, "0 - ERRO AO LISTAR ALIMENTOS : " + e.toString());
+        }
+    }
     
+    public static DefaultTableModel buildTableModel(ResultSet rs)
+        throws SQLException {
+
+    ResultSetMetaData metaData = rs.getMetaData();
+
+    // names of columns
+    Vector<String> columnNames = new Vector<String>();
+    int columnCount = metaData.getColumnCount();
+    for (int column = 1; column <= columnCount; column++) {
+        columnNames.add(metaData.getColumnName(column));
+    }
+
+    // data of the table
+    Vector<Vector<Object>> data = new Vector<Vector<Object>>();
+    while (rs.next()) {
+        Vector<Object> vector = new Vector<Object>();
+        for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
+            vector.add(rs.getObject(columnIndex));
+        }
+        data.add(vector);
+    }
+    DefaultTableModel modelo = new DefaultTableModel(data, columnNames)
+    {
+        @Override
+        public boolean isCellEditable(int row, int column)
+        {
+          return false;//This causes all cells to be not editable
+        }
+        
+    };
+    
+    return modelo; //DefaultTableModel(data, columnNames);
+
+}
     
     
 }

@@ -6,9 +6,11 @@
 package RUQ.gui;
 
 import RUQ.controle.Log;
+import java.awt.Toolkit;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -20,7 +22,18 @@ public class FMain extends javax.swing.JFrame {
      * Creates new form FMain
      */
     public FMain() {
+        
         initComponents();
+            try{
+            //String iconUrl = this.getClass().getResource("/RUQ/img/ruq.jpg").toString();
+            //ImageIcon icon = new ImageIcon("/RUQ/img/ruq.jpg");
+            Toolkit tk = this.getToolkit();
+            setIconImage(tk.getImage(this.getClass().getResource("/RUQ/img/ruq.png")));
+        }
+        catch(Exception e)
+        {   
+            System.out.println(e.toString());
+        }
         Log.writeToLog("Sistema RUQ - Sistema iniciado.");
     }
 
@@ -47,7 +60,8 @@ public class FMain extends javax.swing.JFrame {
         jlbDate = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("RUQ v0.9.7 02Jul2015");
+        setTitle("RUQ v0.9.8");
+        setIconImages(null);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -65,6 +79,7 @@ public class FMain extends javax.swing.JFrame {
 
         btnFichaRecebimento.setText("Ficha de Recebimento");
         btnFichaRecebimento.setToolTipText("Cadastrar nova ficha de recebimento");
+        btnFichaRecebimento.setEnabled(false);
         btnFichaRecebimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFichaRecebimentoActionPerformed(evt);
@@ -120,6 +135,7 @@ public class FMain extends javax.swing.JFrame {
         jPanel1.getAccessibleContext().setAccessibleName("");
 
         jButton1.setText("Protocolo de Recebimento");
+        jButton1.setEnabled(false);
 
         btnConsultaFichaSens.setText("Análise Sensorial");
         btnConsultaFichaSens.addActionListener(new java.awt.event.ActionListener() {
@@ -152,6 +168,7 @@ public class FMain extends javax.swing.JFrame {
         jTabbedPane1.addTab("Consulta", jPanel2);
 
         jButton3.setText("Relatório Semanal de Temperatura");
+        jButton3.setEnabled(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

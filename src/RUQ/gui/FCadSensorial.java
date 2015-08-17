@@ -6,13 +6,11 @@
 package RUQ.gui;
 
 import RUQ.modelo.Alimento;
-import RUQ.modelo.AlimentoFichaSensorial;
 import RUQ.modelo.FichaSensorial;
 import RUQ.modelo.Funcionario;
 import RUQ.modelo.Tipo;
 import java.awt.Component;
 import java.awt.Cursor;
-import java.awt.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -22,15 +20,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.ButtonModel;
-import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.event.PopupMenuListener;
 
 /**
  *
@@ -111,7 +103,7 @@ public class FCadSensorial extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cadastro de Recebimento  v0.9.7 02Jul2015");
+        setTitle("Cadastro de Recebimento  v0.9.8");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -629,7 +621,6 @@ public class FCadSensorial extends javax.swing.JFrame {
         {
             //Cadastrar a ficha
             //INSERT INTO `TblFichaSensorial`(`CodigoFicha`,`DataCriacao`,`HoraCriacao`,`DataRecebimento`,`HoraRecebimento`,`TipoRefeicao`,`HoraDistribuicao`,`NomeResponsavel`,`SaborAprovado`,`OdorAprovado`,`AparenciaAprovado`,`ConsistenciaAprovado`,`Observacoes`) VALUES (1,NULL,NULL,'','',0,NULL,NULL,0,0,0,0,NULL);
-            //FERRARI
             this.setCursor(Cursor.WAIT_CURSOR);       
                 Funcionario fun = new Funcionario(txNomeResponsavel.getText());
                 FichaSensorial fichaSen = new FichaSensorial();
@@ -678,76 +669,69 @@ public class FCadSensorial extends javax.swing.JFrame {
                 Alimento al = null;
                 ArrayList<Alimento> listaDeAlimentos = new ArrayList<>();
                 if(comboAlimento1.getSelectedItem() != null && !(comboAlimento1.getSelectedItem().toString().equals(""))){
-                    al = new Alimento();
-                    al.setNome(comboAlimento1.getSelectedItem().toString());
+                    al = (Alimento) comboAlimento1.getSelectedItem();
                     al.setTemperatura(Double.parseDouble(txOpcao1.getText()));
+                    listaDeAlimentos.add(al);
                 }
-                listaDeAlimentos.add(al);
+                
                 if(comboAlimento2.getSelectedItem() != null && !(comboAlimento2.getSelectedItem().toString().equals(""))){
-                    al = new Alimento();
-                    al.setNome(comboAlimento2.getSelectedItem().toString());
+                    al = (Alimento)  comboAlimento2.getSelectedItem();
                     al.setTemperatura(Double.parseDouble(txOpcao2.getText()));
+                    listaDeAlimentos.add(al);
                 }
-                listaDeAlimentos.add(al);
                 if(comboAlimento3.getSelectedItem() != null && !(comboAlimento3.getSelectedItem().toString().equals(""))){
-                    al = new Alimento();
-                    al.setNome(comboAlimento3.getSelectedItem().toString());
+                    al = (Alimento)  comboAlimento3.getSelectedItem();
                     al.setTemperatura(Double.parseDouble(txAlimento1.getText()));    
+                    listaDeAlimentos.add(al);
                 }
-                listaDeAlimentos.add(al);
+                
                 if(comboAlimento4.getSelectedItem() != null && !(comboAlimento4.getSelectedItem().toString().equals(""))){
-                    al = new Alimento();
-                    al.setNome(comboAlimento4.getSelectedItem().toString());
+                    al = (Alimento)  comboAlimento4.getSelectedItem();
                     al.setTemperatura(Double.parseDouble(txAlimento2.getText()));
+                    listaDeAlimentos.add(al);
                 }
-                listaDeAlimentos.add(al);
                 if(comboAlimento5.getSelectedItem() != null && !(comboAlimento5.getSelectedItem().toString().equals(""))){
-                    al = new Alimento();
-                    al.setNome(comboAlimento5.getSelectedItem().toString());
+                    al = (Alimento)  comboAlimento5.getSelectedItem();
                     al.setTemperatura(Double.parseDouble(txAlimento3.getText()));
+                    listaDeAlimentos.add(al);
                 }
-                listaDeAlimentos.add(al);
+                
                 if(comboAlimento6.getSelectedItem() != null && !(comboAlimento6.getSelectedItem().toString().equals(""))){
-                    al = new Alimento();
-                    al.setNome(comboAlimento6.getSelectedItem().toString());
+                    al = (Alimento)  comboAlimento6.getSelectedItem();
                     al.setTemperatura(Double.parseDouble(txAlimento4.getText()));
+                    listaDeAlimentos.add(al);
                 }
-                listaDeAlimentos.add(al);
+                
                 if(comboAlimento7.getSelectedItem() != null && !(comboAlimento7.getSelectedItem().toString().equals(""))){
-                    al = new Alimento();
-                    al.setNome(comboAlimento7.getSelectedItem().toString());
+                    al = (Alimento)  comboAlimento7.getSelectedItem();
                     al.setTemperatura(Double.parseDouble(txAlimento5.getText()));
-                    
+                    listaDeAlimentos.add(al);
                 }
-                listaDeAlimentos.add(al);
+                
                 if(comboAlimento8.getSelectedItem() != null && !(comboAlimento8.getSelectedItem().toString().equals(""))){
-                    al = new Alimento();
-                    al.setNome(comboAlimento8.getSelectedItem().toString());
+                    al = (Alimento)  comboAlimento8.getSelectedItem();
                     al.setTemperatura(Double.parseDouble(txAlimento6.getText()));
-                    
+                    listaDeAlimentos.add(al);
                 }
-                listaDeAlimentos.add(al);
+                
                 if(comboAlimento9.getSelectedItem() != null && !(comboAlimento9.getSelectedItem().toString().equals(""))){
-                    al = new Alimento();
-                    al.setNome(comboAlimento9.getSelectedItem().toString());
+                    al = (Alimento)  comboAlimento9.getSelectedItem();
                     al.setTemperatura(Double.parseDouble(txAlimento7.getText()));
-                    
+                    listaDeAlimentos.add(al);
                 }
-                listaDeAlimentos.add(al);
+                
                 if(comboAlimento10.getSelectedItem() != null && !(comboAlimento10.getSelectedItem().toString().equals(""))){
-                    al = new Alimento();
-                    al.setNome(comboAlimento10.getSelectedItem().toString());
+                    al = (Alimento)  comboAlimento10.getSelectedItem();
                     al.setTemperatura(Double.parseDouble(txAlimento8.getText()));
-                    
+                    listaDeAlimentos.add(al);
                 }
-                listaDeAlimentos.add(al);
+                
                 if(comboAlimento11.getSelectedItem() != null && !(comboAlimento11.getSelectedItem().toString().equals(""))){
-                    al = new Alimento();
-                    al.setNome(comboAlimento11.getSelectedItem().toString());
+                    al = (Alimento)  comboAlimento11.getSelectedItem();
                     al.setTemperatura(Double.parseDouble(txAlimento9.getText()));
-                    
+                    listaDeAlimentos.add(al);
                 }
-                listaDeAlimentos.add(al);
+                
                 //
                 fichaSen.setListaDeAlimentos(listaDeAlimentos);
                 JOptionPane.showMessageDialog(this, cadastrarFichaSen(fichaSen));
@@ -1021,11 +1005,17 @@ public class FCadSensorial extends javax.swing.JFrame {
             c.setAutoCommit(false); //desliga transacao automatica
             stmt = c.createStatement(); //prepara a query
             
-            //PRECISO DO ID DOS ALIMENTOS E DA FICHA :S
+            //PEGAR O ID DA FICHA INSERIDA!
+            int idFicha,idAlimento;
+            idFicha = ultimoIdFicha();
             //Obs, os \" são para as aspas fazer parte da string
-            String sql = "INSERT INTO TblFichaSensorialAlimento VALUES ();";                              
-
-            stmt.executeUpdate(sql);
+            int alimentosInseridos = 0;
+            ArrayList<Alimento> listaDeAlimentos = ficha.getListaDeAlimentos();
+            for (Alimento al : listaDeAlimentos) {                              
+                String sql = "INSERT INTO TblFichaSensorialAlimento VALUES ("+ idFicha + "," + al.getID() + "," + al.getTemperatura() + ");";
+                stmt.executeUpdate(sql);
+                alimentosInseridos++;
+            }
             stmt.close();
             c.commit();
             c.close();
@@ -1037,15 +1027,30 @@ public class FCadSensorial extends javax.swing.JFrame {
         }
     }
     
-    public int getUltimoID() {
-        //final String MY_QUERY = "SELECT MAX(_id) FROM " + DATABASE_TABLE5;
-        //Cursor cur = c.rawQuery(MY_QUERY, null);
-        //cur.moveToFirst();
-        //int ID = cur.getInt(0);
-        //cur.close();
-        //return ID;
-        return 0;
-    }  
+    public int ultimoIdFicha(){
+        //DefaultListModel modelListaAlimentos = new DefaultListModel();
+        try 
+        {
+            //banco de dados
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:dzero.db");
+            stmt = c.createStatement(); //prepara a query
+            //Obs, os \" são para as aspas fazer parte da string
+            String sql = "SELECT seq from sqlite_sequence where name=\"TblFichaSensorial\"";
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                return rs.getInt("seq");
+            }
+            
+            
+            stmt.close();
+        } 
+        catch (ClassNotFoundException | SQLException e) 
+        {
+                JOptionPane.showMessageDialog(this, "0 - ERRO AO LISTAR ALIMENTOS : " + e.toString());
+        }
+        return -1;
+    }
     
     public void listarAlimentosCombo( JComboBox combo){
         //DefaultListModel modelListaAlimentos = new DefaultListModel();
@@ -1057,13 +1062,17 @@ public class FCadSensorial extends javax.swing.JFrame {
             c = DriverManager.getConnection("jdbc:sqlite:dzero.db");
             stmt = c.createStatement(); //prepara a query
             //Obs, os \" são para as aspas fazer parte da string
-            String sql = "SELECT NomeAlimento FROM TblAlimento;";
+            String sql = "SELECT idAlimento,NomeAlimento FROM TblAlimento;";
             ResultSet rs = stmt.executeQuery(sql);
+            
             while (rs.next()) 
             {
+                al = new Alimento();
+                al.setID(rs.getInt("idAlimento"));
+                al.setNome(rs.getString("NomeAlimento"));
                 //txAreaAlimento.setText(txAreaAlimento.getText() + al.getNome() + "\n");
                 //modelListaAlimentos.addElement(rs.getString("NomeAlimento"));
-                combo.addItem(rs.getString("NomeAlimento"));
+                combo.addItem(al);//(rs.getString("NomeAlimento"));
             }
             
             stmt.close();
@@ -1079,8 +1088,7 @@ public class FCadSensorial extends javax.swing.JFrame {
         for (Component cp : jPanelTemperaturas.getComponents()) {
             if(cp instanceof JTextField){
                 ((JTextField)cp).setText("0");
-            }
-                
+            }  
         }
     }
 }

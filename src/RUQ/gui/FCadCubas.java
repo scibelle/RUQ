@@ -49,7 +49,7 @@ public class FCadCubas extends javax.swing.JFrame {
         jExcluirEssaaLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cadastro de Cubas v0.9.2  13Abr2015");
+        setTitle("Cadastro de Cubas v0.9.8");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);

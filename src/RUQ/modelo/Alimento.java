@@ -85,7 +85,7 @@ public class Alimento implements Serializable{
     
     @Override
     public String toString(){
-        return "Nome: " + this.nome; //+ " -- Percapta: " + this.percapta;
+        return this.nome; //+ " -- Percapta: " + this.percapta;
     }
 
     /**
