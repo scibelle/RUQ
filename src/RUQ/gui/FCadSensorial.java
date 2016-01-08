@@ -287,7 +287,7 @@ public class FCadSensorial extends javax.swing.JFrame {
                     .addComponent(txOpcao2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanelTemperaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(comboAlimento4, 0, 73, Short.MAX_VALUE)
+                    .addComponent(comboAlimento4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(comboAlimento3, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(comboAlimento5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -428,7 +428,7 @@ public class FCadSensorial extends javax.swing.JFrame {
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(chkAparencia)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPnlImagemBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -513,7 +513,7 @@ public class FCadSensorial extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btAdicionar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btSair))
@@ -526,7 +526,7 @@ public class FCadSensorial extends javax.swing.JFrame {
                             .addComponent(txTituloCardapio)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                                 .addComponent(jLabel9)
                                 .addGap(397, 397, 397))))
                     .addGroup(layout.createSequentialGroup()
@@ -559,7 +559,7 @@ public class FCadSensorial extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txTituloCardapio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -738,7 +738,7 @@ public class FCadSensorial extends javax.swing.JFrame {
                 //Cadasrar alimentos
                 JOptionPane.showMessageDialog(this, cadastrarAlimentosFicha(fichaSen));
                 //Limpar a tela!
-                
+                limparCadastro();
                 //Cadastrar os alimentos//Transformar num loop para os controles.
                 
             this.setCursor(Cursor.DEFAULT_CURSOR);
@@ -1002,7 +1002,6 @@ public class FCadSensorial extends javax.swing.JFrame {
             //banco de dados
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:dzero.db");
-            c.setAutoCommit(false); //desliga transacao automatica
             stmt = c.createStatement(); //prepara a query
             
             //PEGAR O ID DA FICHA INSERIDA!
@@ -1017,6 +1016,7 @@ public class FCadSensorial extends javax.swing.JFrame {
                 alimentosInseridos++;
             }
             stmt.close();
+            c.setAutoCommit(false); //desliga transacao automatica
             c.commit();
             c.close();
             return "Alimentos Adicionados!";
@@ -1090,5 +1090,22 @@ public class FCadSensorial extends javax.swing.JFrame {
                 ((JTextField)cp).setText("0");
             }  
         }
+    }
+
+    private void limparCadastro(){
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //Limpa os valores dos controles no cadastro
+        txTituloCardapio.setText("");
+        txDataEntrega.setText("");
+        txDataDistribuicao.setText("");
+        txHoraEntrega.setText("");
+        txHoraDistribuicao.setText("");
+        grupoTipoRefeicao.clearSelection();
+        txNomeResponsavel.setText("");
+        chkAparencia.setSelected(false);
+        chkConsistencia.setSelected(false);
+        chkOdor.setSelected(false);
+        chkSabor.setSelected(false);
+        
     }
 }

@@ -1,3 +1,6 @@
+
+O projeto compartilhado esta parado, irei dar continuidade em uma versão individual.
+
 #Projeto RUQ
 
 O sistema tem como objetivo abranger todo o processo de recebimento e avaliação de qualidade das refeições todos os dias na UFC campus de Quixadá, no período do almoço e jantar.

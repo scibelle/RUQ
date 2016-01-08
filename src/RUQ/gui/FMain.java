@@ -60,7 +60,7 @@ public class FMain extends javax.swing.JFrame {
         jlbDate = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("RUQ v0.9.8");
+        setTitle("RUQ v0.9.9");
         setIconImages(null);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
