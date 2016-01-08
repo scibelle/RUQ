@@ -30,7 +30,3 @@ Autores:
 
 ===============
 
-Contato (Favor colocar o nome "RUQ - UFC" no assunto):
-luizisaias@alu.ufc.br
-
-Sinta-se a vontade para fazer alterações :heavy_check_mark:
